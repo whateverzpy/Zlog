@@ -6,7 +6,7 @@ hasCJKLanguage = true
 defaultContentLanguage = "zh-cn"
 
 [Params]
-  favicon = "/favicon.png"
+  favicon = "/favicon.ico"
 
 [Params.Sidebar]
   avatar = { src = "/avatar.png" }
