@@ -2,18 +2,20 @@ baseURL = 'https://example.org/'
 languageCode = 'zh-CN'
 title = 'WhateverZ'
 theme = "hugo-theme-stack"
-has-CJKLanguage = true
+hasCJKLanguage = true
 defaultContentLanguage = "zh-cn"
 
 [Params]
-favicon = "/favicon.png"
-math = true
+  favicon = "static/favicon.png"
 
 [Params.Sidebar]
-avatar = { src = "/avatar.png" }
+  avatar = { src = "/avatar.png" }
+  emoji = "😪"
+  subtitle = "Zlog"
 
 [Params.Footer]
-since = 2024
+  since = 2024
+  customText = "L'amor che move il sole e l'altre stelle."
 
 [menus]
   [[menus.main]]
@@ -49,3 +51,10 @@ since = 2024
         ["\\(", "\\)"],
         ["$", "$"]
       ]
+
+[languages]
+  [languages.zh-cn]
+    languageCode = "zh-CN"
+    languageName = "简体中文"
+    [languages.zh-cn.params]
+      reading_speed = 100
