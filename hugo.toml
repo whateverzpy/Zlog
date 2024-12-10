@@ -1,0 +1,51 @@
+baseURL = 'https://example.org/'
+languageCode = 'zh-CN'
+title = 'WhateverZ'
+theme = "hugo-theme-stack"
+has-CJKLanguage = true
+defaultContentLanguage = "zh-cn"
+
+[Params]
+favicon = "/favicon.png"
+math = true
+
+[Params.Sidebar]
+avatar = { src = "/avatar.png" }
+
+[Params.Footer]
+since = 2024
+
+[menus]
+  [[menus.main]]
+    name = '主页'
+    title = '主页'
+    pageRef = '/'
+    weight = 10
+  [[menus.main]]
+    name = '文章'
+    title = '文章'
+    pageRef = '/post'
+    weight = 20
+  [[menus.main]]
+    name = '关于'
+    title = '关于'
+    pageRef = '/about'
+    weight = 30
+
+[Params.Article]
+  math = true
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.goldmark.extensions.passthrough]
+      enable = true
+      delimiters.block = [
+        ["\\[", "\\]"],
+        ["$$", "$$"]
+      ]
+      delimiters.inline = [
+        ["\\(", "\\)"],
+        ["$", "$"]
+      ]
