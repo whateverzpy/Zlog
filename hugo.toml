@@ -1,4 +1,4 @@
-baseURL = 'https://whateverzpy.github.io/Zlog/'
+baseURL = 'https://whateverzpy.github.io'
 languageCode = 'zh-CN'
 title = 'WhateverZ'
 theme = "hugo-theme-stack"
@@ -7,6 +7,12 @@ defaultContentLanguage = "zh-cn"
 
 [Params]
   favicon = "/favicon.png"
+
+[Params.widgets]
+  page = [
+    {type = "toc"},
+    {type = "search"}
+  ]
 
 [Params.Sidebar]
   avatar = { src = "/avatar.png" }
@@ -51,3 +57,6 @@ defaultContentLanguage = "zh-cn"
         ["\\(", "\\)"],
         ["$", "$"]
       ]
+
+[languages.zh-cn.params]
+  reading_speed = 200
