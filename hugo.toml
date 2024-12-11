@@ -12,6 +12,9 @@ defaultContentLanguage = "zh-cn"
   page = [
     {type = "toc"},
   ]
+  homepage = [
+    {type = "search"},
+  ]
 
 [Params.Sidebar]
   avatar = { src = "/avatar.png" }
@@ -39,6 +42,8 @@ defaultContentLanguage = "zh-cn"
         ["\\(", "\\)"],
         ["$", "$"]
       ]
+  [markup.highlight]
+    noClasses = false
 
 [languages.zh-cn.params]
   reading_speed = 200
