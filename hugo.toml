@@ -4,6 +4,7 @@ title = 'WhateverZ'
 theme = "hugo-theme-stack"
 hasCJKLanguage = true
 defaultContentLanguage = "zh-cn"
+enableRobotsTXT = true
 
 [Params]
   favicon = "/Zlog/favicon.png"

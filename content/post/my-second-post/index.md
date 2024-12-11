@@ -1,10 +1,12 @@
 +++
-categories = []
-date = '2024-12-10'
-description = '最优化方法作业的解答'
-tags = ['最优化方法']
-title = '最优化方法作业'
 weight = -2
+image = ''
+categories = ['大学学习']
+date = '2024-12-10T21:28:16+08:00'
+title = '最优化方法作业'
+description = '记录一次最优化方法作业的解答'
+tags = ['最优化', '作业']
+lastmod = '2024-12-12T03:08:00+08:00'
 +++
 
 ## 题目 1
@@ -35,8 +37,8 @@ $$
 
 $$
 \begin{aligned}
-&\nabla f(\mathbf{x})=\begin{pmatrix}2x_1-\frac{9}{2} \\ 2x_2-4\end{pmatrix}^T \\
-&\nabla g_1(\mathbf{x})=\begin{pmatrix}2x_1 \\ -1\end{pmatrix}^T
+&\nabla f(\mathbf{x})=\begin{bmatrix}2x_1-\frac{9}{2} \\ 2x_2-4\end{bmatrix}^T \\
+&\nabla g_1(\mathbf{x})=\begin{bmatrix}2x_1 \\ -1\end{bmatrix}^T
 \end{aligned}
 $$
 
@@ -68,13 +70,13 @@ $$
 计算梯度
 
 $$
-\nabla f(\mathbf{x})=\begin{pmatrix}-3 \\ 1 \\ -2x_3\end{pmatrix}^T
+\nabla f(\mathbf{x})=\begin{bmatrix}-3 \\ 1 \\ -2x_3\end{bmatrix}^T
 $$
 
 海塞矩阵
 
 $$
-\nabla^2f(\mathbf{x})=\begin{pmatrix}0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & -2\end{pmatrix}
+\nabla^2f(\mathbf{x})=\begin{bmatrix}0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & -2\end{bmatrix}
 $$
 
 不是正定矩阵或半正定矩阵，因此该问题不是凸优化，可以观察到，若令
