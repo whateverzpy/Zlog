@@ -1,4 +1,4 @@
-baseURL = 'https://whateverzpy.github.io'
+baseURL = 'https://whateverzpy.github.io/Zlog/'
 languageCode = 'zh-CN'
 title = 'WhateverZ'
 theme = "hugo-theme-stack"
@@ -6,7 +6,7 @@ hasCJKLanguage = true
 defaultContentLanguage = "zh-cn"
 
 [Params]
-  favicon = "/favicon.png"
+  favicon = "/Zlog/favicon.png"
 
 [Params.widgets]
   page = [
