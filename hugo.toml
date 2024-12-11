@@ -11,7 +11,6 @@ defaultContentLanguage = "zh-cn"
 [Params.widgets]
   page = [
     {type = "toc"},
-    {type = "search"}
   ]
 
 [Params.Sidebar]
@@ -22,23 +21,6 @@ defaultContentLanguage = "zh-cn"
 [Params.Footer]
   since = 2024
   customText = "L'amor che move il sole e l'altre stelle."
-
-[menus]
-  [[menus.main]]
-    name = '主页'
-    title = '主页'
-    pageRef = '/'
-    weight = 10
-  [[menus.main]]
-    name = '文章'
-    title = '文章'
-    pageRef = '/post'
-    weight = 20
-  [[menus.main]]
-    name = '关于'
-    title = '关于'
-    pageRef = '/about'
-    weight = 30
 
 [Params.Article]
   math = true

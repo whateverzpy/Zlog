@@ -1,9 +1,12 @@
 +++
-categories = []
 date = '2024-12-10'
-description = ''
-tags = []
-title = '关于我'
+title = '关于'
+[menu]
+    [menu.main]
+        name = '关于'
+        weight = 4
+        [menu.main.params]
+            icon = 'user'
 +++
 
 ## 关于我
