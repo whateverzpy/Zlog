@@ -19,3 +19,70 @@ weight = -1
 ## 寄语
 
 希望能在这里分享一些我在学习过程中遇到问题然后解决的方法，希望能坚持下去（真的可以吗。。。。
+
+<!-- ## 测试
+
+以下为测试内容
+
+### 列表测试
+
+- 无序列表项 1
+  - 嵌套无序列表项 1.1
+  - 嵌套无序列表项 1.2
+- 无序列表项 2
+
+1. 有序列表项 1
+2. 有序列表项 2
+   1. 嵌套有序列表项 2.1
+   2. 嵌套有序列表项 2.2
+
+### 引用测试
+
+> 这是一个引用块。
+
+### 代码测试
+
+```python
+def hello_world():
+    print("Hello, World!")
+```
+
+### 链接测试
+
+[Hugo 官网](https://gohugo.io/)
+
+### 图片测试
+
+![Hugo Logo](hugo-logo-wide.svg)
+
+### 表格测试
+
+| 表头 1 | 表头 2 | 表头 3 |
+| ------ | ------ | ------ |
+| 内容 1 | 内容 2 | 内容 3 |
+| 内容 4 | 内容 5 | 内容 6 |
+
+### 粗体和斜体测试
+
+**这是粗体文本**
+
+_这是斜体文本_
+
+**_这是粗体加斜体文本_**
+
+### 分隔线测试
+
+---
+
+### 任务列表测试
+
+- [x] 已完成任务
+- [ ] 未完成任务
+
+### Shortcodes 测试
+
+{{< bilibili BV1pzq3YiEqe >}}
+
+{{< quote author="A famous person" source="The book they wrote" url="https://en.wikipedia.org/wiki/Book">}}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+{{< /quote >}} -->
