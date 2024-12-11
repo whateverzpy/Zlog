@@ -54,6 +54,19 @@ defaultContentLanguage = "zh-cn"
 
 [menu]
   [[menu.social]]
+    identifier = "github"
+    name = "GitHub"
     url = "https://github.com/whateverzpy"
     [menu.social.params]
       icon = "brand-github"
+  [[menu.social]]
+    identifier = "rss"
+    name = "RSS"
+    url = "/index.xml"
+    [menu.social.params]
+      icon = "rss"
+
+
+[outputs]
+  home = ["html", "rss"]
+  section = ["html", "rss"]
