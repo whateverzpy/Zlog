@@ -1,11 +1,12 @@
 +++
-categories = []
-date = '2024-12-10'
-description = '用 Hugo 搭建个人博客'
-tags = ['Hugo', '博客']
-title = '浅尝 Hugo'
-image = 'hugo-logo-wide.svg'
 weight = -1
+image = 'hugo-logo-wide.svg'
+categories = ['瞎折腾']
+date = '2024-12-11T21:28:16+08:00'
+title = '一切的开始'
+description = '用 Hugo 搭建的个人博客'
+tags = ['Hugo', '博客']
+lastmod = '2024-12-11T21:31:00+08:00'
 +++
 
 ## 关于
@@ -20,7 +21,7 @@ weight = -1
 
 希望能在这里分享一些我在学习过程中遇到问题然后解决的方法，希望能坚持下去（真的可以吗。。。。
 
-<!-- ## 测试
+## 测试
 
 以下为测试内容
 
@@ -39,6 +40,13 @@ weight = -1
 ### 引用测试
 
 > 这是一个引用块。
+
+### 带有归属的引用
+
+> Don't communicate by sharing memory, share memory by communicating.<br>
+> <cite> -- Rob Pike[^1] </cite>
+
+[^1]: The above quote is excerpted from Rob Pike's [talk](https://www.youtube.com/watch?v=PAAkCSZUG1c) during Gopherfest, November 18, 2015.
 
 ### 代码测试
 
@@ -85,4 +93,4 @@ _这是斜体文本_
 
 {{< quote author="A famous person" source="The book they wrote" url="https://en.wikipedia.org/wiki/Book">}}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-{{< /quote >}} -->
+{{< /quote >}}

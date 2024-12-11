@@ -8,6 +8,10 @@ defaultContentLanguage = "zh-cn"
 [Params]
   favicon = "/Zlog/favicon.png"
 
+[Params.DateFormat]
+  published = "2006-01-02"
+  lastUpdated = "2006-01-02 15:04 -07:00"
+
 [Params.widgets]
   page = [
     {type = "toc"},
@@ -32,7 +36,7 @@ defaultContentLanguage = "zh-cn"
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
-  [markup.goldmark.extensions.passthrough]
+    [markup.goldmark.extensions.passthrough]
       enable = true
       delimiters.block = [
         ["\\[", "\\]"],
@@ -46,4 +50,10 @@ defaultContentLanguage = "zh-cn"
     noClasses = false
 
 [languages.zh-cn.params]
-  reading_speed = 200
+  reading_speed = 300
+
+[menu]
+  [[menu.social]]
+    url = "https://github.com/whateverzpy"
+    [menu.social.params]
+      icon = "brand-github"
