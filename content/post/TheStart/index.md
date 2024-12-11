@@ -51,6 +51,7 @@ lastmod = '2024-12-11T21:31:00+08:00'
 ### 代码测试
 
 ```python
+# 中文测试
 def hello_world():
     print("Hello, World!")
 ```
