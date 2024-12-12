@@ -47,6 +47,9 @@ enableRobotsTXT = true
         ["\\(", "\\)"],
         ["$", "$"]
       ]
+  [markup.tableOfContents]
+    startLevel = 1
+    endLevel = 4
   [markup.highlight]
     noClasses = false
 
