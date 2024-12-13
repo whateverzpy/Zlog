@@ -6,7 +6,7 @@ date = '2024-12-12T17:40:44+08:00'
 title = '概率论与数理统计的记忆知识点'
 description = '临近期末考试整理的一些需要特别记忆的考点'
 tags = ['概率论', '数理统计']
-lastmod = '2024-12-12T19:20:44+08:00'
+lastmod = '2024-12-13T14:50:44+08:00'
 +++
 
 ## 关于
@@ -61,7 +61,11 @@ $$
 Y=\sum_{i=1}^n X_i^2
 $$
 
-则随机变量 $Y$ 服从自由度为 $n$ 的 $\chi^2$ 分布，记作 $Y\sim\chi^2(n)$。
+则随机变量 $Y$ 服从自由度为 $n$ 的 $\chi^2$ 分布，记作 $Y\sim\chi^2(n)$，且有
+
+$$
+E(Y)=n,D(Y)=2n
+$$
 
 ### \$t\$ 分布
 
@@ -83,7 +87,9 @@ $$
 
 则随机变量 $F$ 服从第一自由度为 $n_1$，第二自由度为 $n_2$ 的 $F$ 分布，记作 $F\sim F(n_1,n_2)$。
 
-## 抽样分布
+## 统计量及抽样分布
+
+设 $X_1, X_2, \dots, X_n$ 为总体 $X$ 的容量为 $n$ 的样本，$T(x_1,x_2, \dots, x_n)$ 是定义在样本空间上不依赖于位置参数的一个连续函数，则称随机变量 $T(X_1,X_2, \dots, X_n)$ 为一个统计量。
 
 $$
 \overline{X}= \frac{1}{n} \sum_{i=1}^n X_i
@@ -175,6 +181,8 @@ $$
 | 指数分布 <br> $E(\lambda)$       | $f(x) = \begin{cases} \lambda e^{-\lambda x}, & x > 0 \\ 0, & x \leq 0 \end{cases}$                               | $\frac{1}{\lambda}$ | $\frac{1}{\lambda^2}$ |
 | 正态分布 <br> $N(\mu, \sigma^2)$ | $f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}$<br>$-\infty < \mu < +\infty$, $\sigma > 0$ | $\mu$               | $\sigma^2$            |
 
+对于泊松分布，若 $X\sim P(\lambda_1),Y\sim P(\lambda_2)$，则 $X+Y\sim P(\lambda_1+\lambda_2)$。
+
 ## \$\Gamma\$ 函数
 
 $$
@@ -200,5 +208,7 @@ $$
 $$
 
 ## PDF 版本
+
+可能不是最新。。。。
 
 {{< pdf "概率论速记.pdf" >}}
