@@ -6,7 +6,7 @@ date = '2024-12-12T17:40:44+08:00'
 title = '概率论与数理统计的记忆知识点'
 description = '临近期末考试整理的一些需要特别记忆的考点'
 tags = ['概率论', '数理统计']
-lastmod = '2024-12-13T16:22:44+08:00'
+lastmod = '2024-12-13T23:57:44+08:00'
 +++
 
 ## 关于
@@ -43,6 +43,46 @@ $$
 2. $F(x)$ 是单调非减的；
 3. $\lim_{x\to-\infty}F(x)=0,\lim_{x\to\infty}F(x)=1$；
 4. $F(x^+)=F(x)$，即 $F(x)$ 是右连续的。
+
+## 二维随机变量函数的分布
+
+### 和的分布
+
+设二维随机变量 $(X,Y)$ 是连续型的，概率密度为 $f(x,y)$，和 $Z=X+Y$，则 $Z$ 是连续型随机变量且概率密度
+
+$$
+f_Z(z)=\int_{-\infty}^{\infty}f(x,z-x)dx=\int_{-\infty}^{\infty}f(z-y,y)dy
+$$
+
+如果 $X$ 与 $Y$ 是独立的，则
+
+$$
+f_Z(z)=\int_{-\infty}^{\infty}f_X(x)f_Y(z-x)dx=\int_{-\infty}^{\infty}f_X(z-y)f_Y(y)dy
+$$
+
+### 条件分布
+
+$$
+f_{X|Y}(x|y)=\frac{f(x,y)}{f_Y(y)}
+$$
+
+$$
+f_{Y|X}(y|x)=\frac{f(x,y)}{f_X(x)}
+$$
+
+### 商的分布
+
+设二位连续型随机变量 $(X,Y)$ 的概率密度为 $f(x,y)$，则 $Z=\frac{Y}{X}$ 的概率密度为
+
+$$
+f_Z(z)=\int_{-\infty}^{\infty}|x|f(x,xz)dx
+$$
+
+当 $X$ 与 $Y$ 相互独立时，有
+
+$$
+f_Z(z)=\int_{-\infty}^{\infty}|x|f_X(x)f_Y(xz)dx
+$$
 
 ## 协方差与相关系数
 
@@ -212,7 +252,7 @@ $$
 | 指数分布 <br> $E(\lambda)$       | $f(x) = \begin{cases} \lambda e^{-\lambda x}, & x > 0 \\ 0, & x \leq 0 \end{cases}$                               | $\frac{1}{\lambda}$ | $\frac{1}{\lambda^2}$ |
 | 正态分布 <br> $N(\mu, \sigma^2)$ | $f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}$<br>$-\infty < \mu < +\infty$, $\sigma > 0$ | $\mu$               | $\sigma^2$            |
 
-对于泊松分布，若 $X\sim P(\lambda_1),Y\sim P(\lambda_2)$，则 $X+Y\sim P(\lambda_1+\lambda_2)$。
+对于泊松分布，若 $X\sim P(\lambda_1),Y\sim P(\lambda_2)$，则 $X+Y\sim P(\lambda_1+\lambda_2)$。\
 对于正态分布，若 $X\sim N(0,\sigma^2)$，则 $E(|X|)=\sigma\sqrt{\frac{2}{\pi}},E(X^2)=\sigma^2$。
 
 ## \$\Gamma\$ 函数
