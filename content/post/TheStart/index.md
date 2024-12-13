@@ -6,7 +6,7 @@ date = '2024-12-11T21:28:16+08:00'
 title = '一切的开始'
 description = '用 Hugo 搭建的个人博客'
 tags = ['Hugo', '博客']
-lastmod = '2024-12-11T21:31:00+08:00'
+lastmod = '2024-12-13T13:06:00+08:00'
 +++
 
 ## 关于
@@ -43,7 +43,8 @@ lastmod = '2024-12-11T21:31:00+08:00'
 
 ### 带有归属的引用
 
-> Don't communicate by sharing memory, share memory by communicating.<br> > <cite> --- Rob Pike[^1] </cite>
+> Don't communicate by sharing memory, share memory by communicating.
+> <cite> --- Rob Pike[^1] </cite>
 
 [^1]: The above quote is excerpted from Rob Pike's [talk](https://www.youtube.com/watch?v=PAAkCSZUG1c) during Gopherfest, November 18, 2015.
 
