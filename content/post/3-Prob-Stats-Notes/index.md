@@ -44,6 +44,16 @@ $$
 3. $\lim_{x\to-\infty}F(x)=0,\lim_{x\to\infty}F(x)=1$；
 4. $F(x^+)=F(x)$，即 $F(x)$ 是右连续的。
 
+## 二维连续型随机变量
+
+$$
+f_X(x)=\int_{-\infty}^{\infty}f(x,y)\ \mathrm{d}y
+$$
+
+$$
+f_Y(y)=\int_{-\infty}^{\infty}f(x,y)\ \mathrm{d}x
+$$
+
 ## 二维随机变量函数的分布
 
 ### 和的分布
@@ -51,13 +61,13 @@ $$
 设二维随机变量 $(X,Y)$ 是连续型的，概率密度为 $f(x,y)$，和 $Z=X+Y$，则 $Z$ 是连续型随机变量且概率密度
 
 $$
-f_Z(z)=\int_{-\infty}^{\infty}f(x,z-x)dx=\int_{-\infty}^{\infty}f(z-y,y)dy
+f_Z(z)=\int_{-\infty}^{\infty}f(x,z-x)\ \mathrm{d}x=\int_{-\infty}^{\infty}f(z-y,y)\ \mathrm{d}y
 $$
 
 如果 $X$ 与 $Y$ 是独立的，则
 
 $$
-f_Z(z)=\int_{-\infty}^{\infty}f_X(x)f_Y(z-x)dx=\int_{-\infty}^{\infty}f_X(z-y)f_Y(y)dy
+f_Z(z)=\int_{-\infty}^{\infty}f_X(x)f_Y(z-x)\ \mathrm{d}x=\int_{-\infty}^{\infty}f_X(z-y)f_Y(y)\ \mathrm{d}y
 $$
 
 ### 条件分布
@@ -75,13 +85,13 @@ $$
 设二位连续型随机变量 $(X,Y)$ 的概率密度为 $f(x,y)$，则 $Z=\frac{Y}{X}$ 的概率密度为
 
 $$
-f_Z(z)=\int_{-\infty}^{\infty}|x|f(x,xz)dx
+f_Z(z)=\int_{-\infty}^{\infty}|x|f(x,xz)\ \mathrm{d}x
 $$
 
 当 $X$ 与 $Y$ 相互独立时，有
 
 $$
-f_Z(z)=\int_{-\infty}^{\infty}|x|f_X(x)f_Y(xz)dx
+f_Z(z)=\int_{-\infty}^{\infty}|x|f_X(x)f_Y(xz)\ \mathrm{d}x
 $$
 
 ## 协方差与相关系数
@@ -111,7 +121,7 @@ $$
 设 $X_1,X_2,\dots,X_n$ 独立同分布，且具有有限的数学期望和方差 $E(X_i)=\mu,D(X_i)=\sigma^2$，则
 
 $$
-\lim_{n \to \infty} P\left(\frac{\sum_{i=1}^n X_i - n \mu}{\sqrt{n} \sigma} \leq x \right) = \Phi(x) = \int_{-\infty}^x \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}} dx
+\lim_{n \to \infty} P\left(\frac{\sum_{i=1}^n X_i - n \mu}{\sqrt{n} \sigma} \leq x \right) = \Phi(x) = \int_{-\infty}^x \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}} \ \mathrm{d}x
 $$
 
 ### 棣莫弗-拉普拉斯定理
@@ -119,7 +129,7 @@ $$
 在 $n$ 重伯努利试验中，成功概率为 $p$，成功次数为 $Y_n$，则
 
 $$
-\lim_{n \to \infty} P\left( \frac{Y_n - np}{\sqrt{npq}} \leq x \right) = \Phi(x) = \int_{-\infty}^x \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}} dx
+\lim_{n \to \infty} P\left( \frac{Y_n - np}{\sqrt{npq}} \leq x \right) = \Phi(x) = \int_{-\infty}^x \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}} \ \mathrm{d}x
 $$
 
 ## 数理统计中的三大分布
@@ -258,7 +268,7 @@ $$
 ## \$\Gamma\$ 函数
 
 $$
-\Gamma(z) = \int_0^\infty t^{z-1} e^{-t} dt
+\Gamma(z) = \int_0^\infty t^{z-1} e^{-t} \ \mathrm{d}t
 $$
 
 若 $n$ 为正整数，则
