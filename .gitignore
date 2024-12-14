@@ -1,2 +1,22 @@
+# Hugo 生成的文件
 /public/
 /resources/_gen/
+/.hugo_build.lock
+
+# Node 依赖
+/node_modules/
+
+# IDE 和编辑器文件
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Hugo 资源文件
+/assets/jsconfig.json
+
+# 临时文件
+*.log
+*.tmp
+*.temp
