@@ -5,6 +5,7 @@ theme = "hugo-theme-stack"
 hasCJKLanguage = true
 defaultContentLanguage = "zh-cn"
 enableRobotsTXT = true
+enableEmoji = true
 
 [Params]
   favicon = "/Zlog/favicon.png"
