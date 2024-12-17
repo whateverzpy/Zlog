@@ -117,6 +117,16 @@ Hello! :wave:
 
 这是一个颜色示例 `#FF0000` 和另一个颜色 `rgb(0, 255, 0)`，这是正常的代码 `text`。
 
+### 图表测试
+
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
+
 ### Shortcodes 测试
 
 #### Bilibili 视频
