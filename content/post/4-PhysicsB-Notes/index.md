@@ -373,6 +373,16 @@ $$
 d(\sin{\theta}+\sin{i})=\pm\frac{2k+1}{2}\lambda
 $$
 
+#### 缺级
+
+缺级条件
+
+$$
+\frac{b+b'}{b}=\frac{k}{k'}
+$$
+
+例如，若 $\frac{b+b'}{b}=3$，则在 $k=3,6,9,\dots$ 处形成缺级。
+
 ### 马吕斯定律
 
 从检偏器透出的光的振幅为
@@ -484,6 +494,14 @@ $$
 $$
 \nu_0=\frac{W}{h}
 $$
+
+### 康普顿效应
+
+$$
+\Delta \lambda=\lambda-\lambda_0=\frac{h}{m_0c}(1-\cos{\theta})=\frac{2h}{m_0c}\sin^2{\frac{\theta}{2}}
+$$
+
+其中 $\lambda_0$ 为入射光子的波长，$\lambda$ 为散射光子的波长。
 
 ### 氢原子的玻尔理论
 
