@@ -6,7 +6,7 @@ date = '2024-12-17T14:28:43+08:00'
 title = '大学物理 B 期末复习知识点'
 description = '大学物理 B 的一些重要公式归纳总结'
 tags = ['大学物理']
-lastmod = '2024-12-23T13:44:43+08:00'
+lastmod = '2024-12-23T14:38:43+08:00'
 +++
 
 ## 热学
@@ -103,6 +103,18 @@ $$
 
 $$
 v_{rms}=\sqrt{\overline{v^2}}=\sqrt{\frac{3kT}{m}}=\sqrt{\frac{3RT}{M}}
+$$
+
+### 重力场中气体分子数密度公式
+
+$$
+n=n_0e^{-\frac{m\mathrm{g}z}{kT}}
+$$
+
+### 重力场中的等温气压公式
+
+$$
+p=p_0e^{-\frac{m\mathrm{g}z}{kT}}
 $$
 
 ### 分子的平均碰撞频率和平均自由程
@@ -232,6 +244,16 @@ $$
 ## 光学
 
 可见光谱范围 360-400nm 到 760-830nm
+
+### 光程差与相位差
+
+$$
+\Delta r=n_2L_2-n_1L_1
+$$
+
+$$
+\Delta\phi=\frac{2\pi\Delta r}{\lambda}
+$$
 
 ### 杨氏双缝干涉
 
@@ -502,6 +524,10 @@ $$
 $$
 
 ### 康普顿效应
+
+$$
+h\nu_0+m_0c^2=h\nu+mc^2
+$$
 
 $$
 \Delta \lambda=\lambda-\lambda_0=\frac{h}{m_0c}(1-\cos{\theta})=\frac{2h}{m_0c}\sin^2{\frac{\theta}{2}}
