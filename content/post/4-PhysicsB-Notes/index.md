@@ -6,7 +6,7 @@ date = '2024-12-17T14:28:43+08:00'
 title = '大学物理 B 期末复习知识点'
 description = '大学物理 B 的一些重要公式归纳总结'
 tags = ['大学物理']
-lastmod = '2024-12-23T15:57:43+08:00'
+lastmod = '2024-12-23T19:18:43+08:00'
 +++
 
 ## 热学
@@ -347,12 +347,20 @@ $$
 b\sin{\theta}=\pm\frac{2k+1}{2}\lambda
 $$
 
+$$
+x=\pm\frac{2k+1}{2}\frac{\lambda f}{b}
+$$
+
 其中 $b$ 为单缝宽度。
 
 暗条纹中心
 
 $$
 b\sin{\theta}=\pm k\lambda
+$$
+
+$$
+x=\pm k\frac{\lambda f}{b}
 $$
 
 注意这里的明暗关系与双缝干涉正好相反。
