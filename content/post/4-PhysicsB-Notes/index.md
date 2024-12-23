@@ -4,9 +4,9 @@ image = ''
 categories = ['大学学习']
 date = '2024-12-17T14:28:43+08:00'
 title = '大学物理 B 期末复习知识点'
-description = '大学物理 B 的一些重要公式归纳总结（持续更新中）'
+description = '大学物理 B 的一些重要公式归纳总结'
 tags = ['大学物理']
-lastmod = '2024-12-23T00:26:43+08:00'
+lastmod = '2024-12-23T13:44:43+08:00'
 +++
 
 ## 热学
@@ -213,6 +213,12 @@ $$
 
 $$
 \Delta S=S_B-S_A=\int_A^B\frac{\mathrm{d}Q}{T}
+$$
+
+#### 理想气体熵变公式
+
+$$
+\Delta S=\nu C_{V,\mathrm{m}}\ln{\frac{T_2}{T_1}}+\nu R\ln{\frac{V_2}{V_1}}
 $$
 
 #### 玻耳兹曼关系式
