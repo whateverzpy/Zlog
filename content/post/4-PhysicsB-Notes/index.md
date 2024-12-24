@@ -275,7 +275,7 @@ $$
 x=\pm\frac{d'}{d}k\lambda
 $$
 
-其中 $d'$ 为双缝与光屏间的距离。
+其中 $d'$ 为双缝与光屏间的距离，$k=0,1,2,\dots$。
 
 暗条纹中心
 
@@ -351,7 +351,7 @@ $$
 x=\pm\frac{2k+1}{2}\frac{\lambda f}{b}
 $$
 
-其中 $b$ 为单缝宽度。
+其中 $b$ 为单缝宽度，$k=1,2,\dots$。
 
 暗条纹中心
 
@@ -363,7 +363,7 @@ $$
 x=\pm k\frac{\lambda f}{b}
 $$
 
-注意这里的明暗关系与双缝干涉正好相反。
+注意这里的明暗关系与双缝干涉正好相反，并且 $k$ 从 $1$ 开始取。
 
 中央明纹宽度
 
@@ -558,7 +558,7 @@ $$
 氢原子光谱公式的一般形式
 
 $$
-\sigma=\frac{1}{\lambda}=R\left(\frac{1}{n_{\mathrm{f}}^2}-\frac{1}{n_{\mathrm{i}}^2}\right)
+\sigma=\frac{1}{\lambda}=R_{\infty}\left(\frac{1}{n_{\mathrm{f}}^2}-\frac{1}{n_{\mathrm{i}}^2}\right)
 $$
 
 #### 量子化条件
