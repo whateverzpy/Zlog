@@ -6,7 +6,7 @@ date = '2024-12-17T14:28:43+08:00'
 title = '大学物理 B 期末复习知识点'
 description = '大学物理 B 的一些重要公式归纳总结'
 tags = ['大学物理']
-lastmod = '2024-12-24T12:54:43+08:00'
+lastmod = '2024-12-26T23:15:43+08:00'
 +++
 
 ## 热学
@@ -581,14 +581,14 @@ $$
 
 #### 氢原子光谱线系
 
-| 谱线系名称及发现年代        | 谱线波段 | $n_f$ | $n_i$     | 谱线公式                                                                     |
-| --------------------------- | -------- | ----- | --------- | ---------------------------------------------------------------------------- |
-| 莱曼 (Lyman) 系, 1916       | 紫外线   | 1     | 2, 3, ... | $\sigma = \frac{1}{\lambda} = R\left(\frac{1}{1^2} - \frac{1}{n_i^2}\right)$ |
-| 巴耳末 (Balmer) 系, 1885    | 可见光   | 2     | 3, 4, ... | $\sigma = \frac{1}{\lambda} = R\left(\frac{1}{2^2} - \frac{1}{n_i^2}\right)$ |
-| 帕邢 (Paschen) 系, 1908     | 红外线   | 3     | 4, 5, ... | $\sigma = \frac{1}{\lambda} = R\left(\frac{1}{3^2} - \frac{1}{n_i^2}\right)$ |
-| 布拉开 (Brackett) 系, 1922  | 红外线   | 4     | 5, 6, ... | $\sigma = \frac{1}{\lambda} = R\left(\frac{1}{4^2} - \frac{1}{n_i^2}\right)$ |
-| 普丰德 (Pfund) 系, 1924     | 红外线   | 5     | 6, 7, ... | $\sigma = \frac{1}{\lambda} = R\left(\frac{1}{5^2} - \frac{1}{n_i^2}\right)$ |
-| 汉弗莱 (Humphreys) 系, 1953 | 红外线   | 6     | 7, 8, ... | $\sigma = \frac{1}{\lambda} = R\left(\frac{1}{6^2} - \frac{1}{n_i^2}\right)$ |
+| 谱线系名称及发现年代        | 谱线波段 | $n_\mathrm{f}$ | $n_\mathrm{i}$ | 谱线公式                                                                     |
+| --------------------------- | -------- | -------------- | -------------- | ---------------------------------------------------------------------------- |
+| 莱曼 (Lyman) 系, 1916       | 紫外线   | 1              | 2, 3, ...      | $\sigma = \frac{1}{\lambda} = R\left(\frac{1}{1^2} - \frac{1}{n_i^2}\right)$ |
+| 巴耳末 (Balmer) 系, 1885    | 可见光   | 2              | 3, 4, ...      | $\sigma = \frac{1}{\lambda} = R\left(\frac{1}{2^2} - \frac{1}{n_i^2}\right)$ |
+| 帕邢 (Paschen) 系, 1908     | 红外线   | 3              | 4, 5, ...      | $\sigma = \frac{1}{\lambda} = R\left(\frac{1}{3^2} - \frac{1}{n_i^2}\right)$ |
+| 布拉开 (Brackett) 系, 1922  | 红外线   | 4              | 5, 6, ...      | $\sigma = \frac{1}{\lambda} = R\left(\frac{1}{4^2} - \frac{1}{n_i^2}\right)$ |
+| 普丰德 (Pfund) 系, 1924     | 红外线   | 5              | 6, 7, ...      | $\sigma = \frac{1}{\lambda} = R\left(\frac{1}{5^2} - \frac{1}{n_i^2}\right)$ |
+| 汉弗莱 (Humphreys) 系, 1953 | 红外线   | 6              | 7, 8, ...      | $\sigma = \frac{1}{\lambda} = R\left(\frac{1}{6^2} - \frac{1}{n_i^2}\right)$ |
 
 ### 德布罗意波
 
@@ -852,7 +852,7 @@ $$
 $CD$ 等温压缩
 
 $$
-W_3=Q_2=-\nu RT_1\ln{\frac{V_3}{V_4}}
+W_3=Q_2=-\nu RT_2\ln{\frac{V_3}{V_4}}
 $$
 
 $DA$ 绝热压缩
