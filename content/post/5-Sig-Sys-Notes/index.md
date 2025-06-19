@@ -74,6 +74,16 @@ $$
 
 ## 傅里叶变换
 
+常用公式
+
+$$
+\cos{\omega t}=\frac{1}{2}(e^{j\omega t}+e^{-j\omega t})
+$$
+
+$$
+\sin{\omega t}=\frac{1}{2j}(e^{j\omega t}-e^{-j\omega t})
+$$
+
 ### 傅里叶级数
 
 #### 三角函数形式
@@ -100,6 +110,24 @@ $$
 b_n=\frac{2}{T_1}\int_{t_0}^{t_0+T_1} f(t)\sin(n\omega_1 t)\mathrm{d}t
 $$
 
+同频率项加以合并，写成另一种形式
+
+$$
+f(t)=c_0+\sum_{n=1}^{\infty}c_n\cos(n\omega_1 t+\varphi_n)
+$$
+
+其中
+
+$$
+\begin{cases}
+c_0=a_0\\
+c_n=\sqrt{a_n^2+b_n^2}\\
+\cos{\varphi_n}=\frac{a_n}{c_n}\\
+\sin{\varphi_n}=-\frac{b_n}{c_n}\\
+\tan{\varphi_n}=-\frac{b_n}{a_n}
+\end{cases}
+$$
+
 #### 指数形式
 
 $$
@@ -110,6 +138,17 @@ $$
 
 $$
 F(n\omega_1)=F_n=\frac{1}{T_1}\int_{t_0}^{t_0+T_1} f(t)e^{-jn\omega_1 t}\mathrm{d}t
+$$
+
+$F_n$ 与其他系数有如下关系
+
+$$
+\begin{cases}
+F_0=c_0=a_0\\
+F_n=|F_n|e^{j\varphi_n}=\frac{1}{2}(a_n-jb_n)\\
+F_{-n}=|F_n|e^{-j\varphi_n}=\frac{1}{2}(a_n+jb_n)\\
+|F_n|=|F_{-n}|=\frac{1}{2}c_n=\frac{1}{2}\sqrt{a_n^2+b_n^2}
+\end{cases}
 $$
 
 ### 傅里叶变换
@@ -138,8 +177,20 @@ $$
 | 尺度变换 | $f(at)$ | $\frac{1}{\vert a\vert}F\left(\frac{\omega}{a}\right)$ |
 | 时移 | $f(t-t_0)$ | $F(\omega)e^{-j\omega t_0}$ |
 | 频移 | $f(t)e^{j\omega_0 t}$ | $F(\omega-\omega_0)$ |
+| 时域微分 | $\frac{\mathrm{d}^n f(t)}{\mathrm{d}t^n}$ | $(j\omega)^n F(\omega)$ |
+| 频域微分 | $(-jt)^n f(t)$ | $\frac{\mathrm{d}^n F(\omega)}{\mathrm{d}\omega^n}$ |
 | 时域卷积 | $f_1(t)*f_2(t)$ | $F_1(\omega)F_2(\omega)$ |
 | 频域卷积 | $f_1(t)f_2(t)$ | $\frac{1}{2\pi}F_1(\omega)*F_2(\omega)$ |
+
+#### 常见信号的傅里叶变换
+
+| 信号名称 | 时间函数 $f(t)$ | 频谱函数 $F(\omega)$ |
+| -------- | ---------------- | ------------------- |
+| 矩形脉冲 | $E\left[u(t+\frac{\tau}{2})-u(t-\frac{\tau}{2})\right]$ | $E\tau\mathrm{Sa}(\frac{\omega\tau}{2})$ |
+| 抽样脉冲 | $\mathrm{Sa}(\omega_c t)=\frac{\sin{\omega_c t}}{\omega_c t}$ | $\frac{\pi}{\omega_c}[u(\omega+\omega_c)-u(\omega-\omega_c)]$ |
+| 冲激函数 | $E\delta(t)$ | $E$ |
+| 阶跃函数 | $Eu(t)$ | $\frac{E}{j\omega} + \pi E\delta(\omega)$ |
+| 直流信号 | $E$ | $2\pi E\delta(\omega)$ |
 
 ### 抽样定理
 
@@ -159,12 +210,22 @@ $$
 
 | 性质 | 内容 |
 | ---- | ---- |
-| 对 $t$ 微分 | $\mathcal{L}\left[\frac{\mathrm{d}^n f(t)}{\mathrm{d}t^n}\right]=s^nF(s)-\sum_{r=0}^{n-1}s^{n-r-1}f^{(r)}(0)$ |
+| 对 $t$ 微分 | $\mathcal{L}\left[\frac{\mathrm{d}^n f(t)}{\mathrm{d}t^n}\right]=s^nF(s)-\sum_{r=0}^{n-1}s^{n-r-1}f^{(r)}(0_-)$ |
 | 时域平移 | $\mathcal{L}[f(t-t_0)u(t-t_0)]=e^{-st_0}F(s)$ |
 | 频域平移 | $\mathcal{L}[f(t)e^{-at}]=F(s+a)$ |
 | 尺度变换 | $\mathcal{L}[f(at)]=\frac{1}{a}F\left(\frac{s}{a}\right)$ |
 | 初值 | $\lim_{t\to0}f(t)=\lim_{s\to\infty}sF(s)$ |
 | 终值 | $\lim_{t\to\infty}f(t)=\lim_{s\to0}sF(s)$ |
+| 对 $s$ 微分 | $\mathcal{L}[-tf(t)]=\frac{\mathrm{d}F(s)}{\mathrm{d}s}$ |
+| 对 $s$ 积分 | $\mathcal{L}\left[\frac{f(t)}{t}\right]=\int_{s}^{\infty}F(s)\mathrm{d}s$ |
+
+### 常用函数的拉普拉斯变换
+
+| $f(t)$ | $F(s)$ |
+| ------ | ------- |
+| $t^n$ | $\frac{n!}{s^{n+1}}$ |
+| $\sin{\omega t}$ | $\frac{\omega}{s^2+\omega^2}$ |
+| $\cos{\omega t}$ | $\frac{s}{s^2+\omega^2}$ |
 
 ### 拉普拉斯逆变换
 
