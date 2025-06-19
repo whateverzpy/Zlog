@@ -95,6 +95,7 @@ a_n=\frac{2}{T_1}\int_{t_0}^{t_0+T_1} f(t)\cos(n\omega_1 t)\mathrm{d}t
 $$
 
 正弦分量的幅度
+
 $$
 b_n=\frac{2}{T_1}\int_{t_0}^{t_0+T_1} f(t)\sin(n\omega_1 t)\mathrm{d}t
 $$
