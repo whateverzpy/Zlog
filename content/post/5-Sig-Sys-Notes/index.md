@@ -191,6 +191,8 @@ $$
 | 冲激函数 | $E\delta(t)$ | $E$ |
 | 阶跃函数 | $Eu(t)$ | $\frac{E}{j\omega} + \pi E\delta(\omega)$ |
 | 直流信号 | $E$ | $2\pi E\delta(\omega)$ |
+| 余弦信号 | $E\cos{\omega_0 t}$ | $\pi E[\delta(\omega+\omega_0)+\delta(\omega-\omega_0)]$ |
+| 正弦信号 | $E\sin{\omega_0 t}$ | $j\pi E[\delta(\omega+\omega_0)-\delta(\omega-\omega_0)]$ |
 
 ### 抽样定理
 
@@ -313,6 +315,13 @@ $$
     \end{cases}
     $$
 
+3. 二者存在关系
+
+    $$
+    \delta(n)=u(n)-u(n-1)\\
+    u(n)=\sum_{k=0}^{\infty}\delta(n-k)
+    $$
+
 ### 单位样值响应相关
 
 离散线性时不变系统作为因果系统的充分必要条件是
@@ -348,6 +357,16 @@ $$
 $$
 X(z)=\mathcal{Z}[x(n)]=\sum_{n=-\infty}^{\infty}x(n)z^{-n}
 $$
+
+### 典型序列的 \$z\$ 变换
+
+| 序列 $x(n)$ | $z$ 变换 $X(z)$ |
+| ------------ | ------------- |
+| $\delta(n)$ | $1$ |
+| $u(n)$ | $\frac{z}{z-1},\ \vert z\vert>1$ |
+| $a^n u(n)$ | $\frac{z}{z-a},\ \vert z\vert> \vert a\vert$ |
+| $\cos{\omega_0 n}$ | $\frac{z(z-\cos{\omega_0})}{z^2-2z\cos{\omega_0}+1},\ \vert z\vert>1$ |
+| $\sin{\omega_0 n}$ | $\frac{z\sin{\omega_0}}{z^2-2z\cos{\omega_0}+1},\ \vert z\vert>1$ |
 
 ### 逆 \$z\$ 变换
 
