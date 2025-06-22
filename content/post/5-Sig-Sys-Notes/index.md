@@ -6,7 +6,7 @@ date = '2025-06-17T19:12:38+08:00'
 title = '信号与系统期末复习知识点'
 description = '信号与系统一些重要公式和知识点的归纳总结'
 tags = ['信号与系统']
-lastmod = '2025-06-18T00:08:00+08:00'
+lastmod = '2025-06-22T14:31:00+08:00'
 +++
 
 ## 绪论
@@ -225,6 +225,8 @@ $$
 
 | $f(t)$ | $F(s)$ |
 | ------ | ------- |
+| $\delta(t)$ | $1$ |
+| $u(t)$ | $\frac{1}{s}$ |
 | $t^n$ | $\frac{n!}{s^{n+1}}$ |
 | $\sin{\omega t}$ | $\frac{\omega}{s^2+\omega^2}$ |
 | $\cos{\omega t}$ | $\frac{s}{s^2+\omega^2}$ |
@@ -414,6 +416,18 @@ $$
 
 $$
 \mathcal{Z}[x(n-m)u(n)]=z^{-m}\left[X(z)+\sum_{k=-m}^{-1}x(k)z^{-k}\right]
+$$
+
+#### \$z\$ 域微分
+
+$$
+\mathcal{Z}[nx(n)]=-z\frac{\mathrm{d}X(z)}{\mathrm{d}z}
+$$
+
+#### \$z\$ 域尺度变换
+
+$$
+\mathcal{Z}[a^n x(n)]=X\left(\frac{z}{a}\right)
 $$
 
 #### 初值定理
