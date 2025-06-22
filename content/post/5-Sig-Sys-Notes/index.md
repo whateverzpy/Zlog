@@ -6,7 +6,7 @@ date = '2025-06-17T19:12:38+08:00'
 title = '信号与系统期末复习知识点'
 description = '信号与系统一些重要公式和知识点的归纳总结'
 tags = ['信号与系统']
-lastmod = '2025-06-22T14:31:00+08:00'
+lastmod = '2025-06-22T22:39:00+08:00'
 +++
 
 ## 绪论
@@ -390,11 +390,26 @@ $$
 X(z)=\sum_{m=0}^{M}\frac{A_m z}{z-z_m}+\sum_{j=1}^{s}\frac{B_j z}{(z-z_i)^j}
 $$
 
+或
+
+$$
+X(z)=\sum_{m=0}^{M}\frac{A_m z}{z-z_m}+\sum_{j=1}^{s}\frac{C_j z^j}{(z-z_i)^j}
+$$
+
 其中
 
 $$
 B_j=\frac{1}{(s-j)!}\frac{\mathrm{d}^{s-j}}{\mathrm{d}z^{s-j}}(z-z_i)^s\frac{X(z)}{z}\bigg|_{z=z_i}
 $$
+
+$C_j$ 可由待定系数法求出。
+
+#### 逆 \$z\$ 变换表
+
+| $z$ 变换 ($\vert z\vert>\vert a\vert$) | 序列 |
+| --------- | ---- |
+| $\frac{z}{z-a}$ | $a^n u(n)$ |
+| $\frac{z^{m+1}}{(z-a)^{m+1}}$ | $\frac{(n+1)(n+2)\cdots(n+m)}{m!}a^n u(n)$ |
 
 ### \$z\$ 变换的主要性质
 
