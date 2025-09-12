@@ -88,7 +88,7 @@ _这是斜体文本_
 
 ~~这是删除线文本~~
 
-<ins>这是下划线文本</ins>
+<u>这是下划线文本</u>
 
 ### Emoji 测试
 
@@ -135,7 +135,7 @@ graph TD;
 
 #### 带源的引用
 
-{{< quote author="A famous person" source="The book he wrote" url="https://en.wikipedia.org/wiki/Book">}}
+{{< quote author="A famous person" source="The book he wrote" url="<https://en.wikipedia.org/wiki/Book">}}>
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 {{< /quote >}}
 
@@ -164,3 +164,7 @@ Urgent info that needs immediate user attention to avoid problems.
 {{< alert caution >}}
 Advises about risks or negative outcomes of certain actions.
 {{< /alert >}}
+
+### AI 内容标记测试
+
+{{< ai-generated >}}
