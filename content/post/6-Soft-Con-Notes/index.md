@@ -742,56 +742,11 @@ public class Singleton {
 
 ##### （1）简单工厂模式
 
-```plantuml
-@startuml
-abstract class BMW
-class BMW320
-class BMW523
-class FactoryBMW {
-    + createBMW():void
-}
-
-class 客户 {
-    - 宝马320:int
-    - 宝马523:int
-}
-
-BMW <|-- BMW320
-BMW <|-- BMW523
-BMW523 <..FactoryBMW:生产
-BMW320 <..FactoryBMW:生产
-FactoryBMW <.. 客户
-@enduml
-```
+![简单工厂模式 uml 类图](简单工厂模式uml类图.svg)
 
 ##### （2）工厂方法模式
 
-```plantuml
-@startuml
-abstract class BMW
-class BMW320
-class BMW523
-interface FactoryBMW {
-    + {abstract} createBMW():BMW
-}
-
-class FactoryBMW320
-class FactoryBMW523
-
-class 客户 {
-    - 宝马320:int
-    - 宝马523:int
-}
-
-BMW <|-- BMW320
-BMW <|-- BMW523
-FactoryBMW <|.. FactoryBMW320
-FactoryBMW <|.. FactoryBMW523
-BMW523 <..FactoryBMW523:生产
-BMW320 <..FactoryBMW320:生产
-FactoryBMW <.. 客户
-@enduml
-```
+![工厂方法模式 uml 类图](工厂方法模式uml类图.svg)
 
 #### 3. 区别（特点）
 
@@ -829,69 +784,7 @@ FactoryBMW <.. 客户
 
 #### 3. 结构图
 
-```plantuml
-@startuml
-' 接口定义
-interface IProductFactory {
-  + {abstract} phoneProduct():IPhoneProduct
-  + {abstract} routerProduct():IRouterProduct
-}
-
-interface IPhoneProduct {
-  + {abstract} start():void
-  + {abstract} shutdown():void
-  + {abstract} callup():void
-  + {abstract} sendSMS():void
-}
-
-interface IRouterProduct {
-  + {abstract} start():void
-  + {abstract} shutdown():void
-  + {abstract} openwifi():void
-  + {abstract} setting():void
-}
-
-' 类定义
-class HuaweiFactory implements IProductFactory {
-  + phoneProduct():IPhoneProduct
-  + routerProduct():IRouterProduct
-}
-
-class XiaomiFactory implements IProductFactory {
-  + phoneProduct():IPhoneProduct
-  + routerProduct():IRouterProduct
-}
-
-class HuaweiPhone implements IPhoneProduct {
-  + start():void
-  + shutdown():void
-  + callup():void
-  + sendSMS():void
-}
-
-class XiaomiPhone implements IPhoneProduct {
-  + start():void
-  + shutdown():void
-  + callup():void
-  + sendSMS():void
-}
-
-class HuaweiRouter implements IRouterProduct {
-  + start():void
-  + shutdown():void
-  + openwifi():void
-  + setting():void
-}
-
-class XiaomiRouter implements IRouterProduct {
-  + start():void
-  + shutdown():void
-  + openwifi():void
-  + setting():void
-}
-
-@enduml
-```
+![抽象工厂模式 uml 类图](抽象工厂模式uml类图.svg)
 
 ---
 
@@ -1267,41 +1160,7 @@ int Func1(int a, int b, int x) {
 
 ##### UML 结构图
 
-```plantuml
-@startuml
-interface Strategy {
-  + {abstract} strategyMethod():void
-}
-
-class ConcreteStrategyA {
-  + strategyMethod():void
-}
-
-class ConcreteStrategyB {
-  + strategyMethod():void
-}
-
-class Context {
-  - strategy:Strategy
-  + setStrategy(Strategy strategy):void
-  + getStrategy():Strategy
-  + strategyMethod():void
-}
-
-' 实现关系
-ConcreteStrategyA ..|> Strategy
-ConcreteStrategyB ..|> Strategy
-
-' 关联关系
-Context o-- Strategy
-
-note left of Context::strategyMethod
-public void strategyMethod() {
-    strategy.strategyMethod();
-}
-end note
-@enduml
-```
+![策略模式 uml 类图](策略模式uml类图.svg)
 
 #### 3. 算法与对象分离的解决方案
 
@@ -1364,12 +1223,12 @@ end note
 
 #### 1. Java 的系统流
 
-- System.in：标准输入流，默认设备是键盘。
-- System.out：标准输出流，默认设备是控制台。
+- `System.in`：标准输入流，默认设备是键盘。
+- `System.out`：标准输出流，默认设备是控制台。
 
 #### 2. 读取控制台输入
 
-需通过 BufferedReader 包装 System.in 来创建字符流，核心代码如下：
+需通过 `BufferedReader` 包装 `System.in` 来创建字符流，核心代码如下：
 
 ```java
 import java.io.*;
@@ -1395,7 +1254,7 @@ public class BRRead {
 
 #### 3. 文件的输入输出
 
-核心使用 FileInputStream（文件输入流）和 FileOutputStream（文件输出流），示例代码如下：
+核心使用 `FileInputStream`（文件输入流）和 `FileOutputStream`（文件输出流），示例代码如下：
 
 ```java
 import java.io.*;
@@ -1428,12 +1287,12 @@ public class FileStreamTest {
 
 #### 1. 四大流家族的根节点
 
-- 字节流：输入流根节点为 InputStream，输出流根节点为 OutputStream。
-- 字符流：输入流根节点为 Reader，输出流根节点为 Writer。
+- 字节流：输入流根节点为 `InputStream`，输出流根节点为 `OutputStream`。
+- 字符流：输入流根节点为 `Reader`，输出流根节点为 `Writer`。
 
 #### 2. 流的关闭要求
 
-所有流都实现了 java.io.Closeable 接口，均包含 close() 方法。流使用结束后必须调用 close() 关闭，避免耗费系统资源。
+所有流都实现了 `java.io.Closeable` 接口，均包含 `close()` 方法。流使用结束后必须调用 `close()` 关闭，避免耗费系统资源。
 
 ### 四、操作文件
 
@@ -1472,11 +1331,11 @@ public class FileOperation {
 
 #### 2. 主要功能
 
-- 创建：通过 createFile() 创建文件，createDirectory() 创建目录。
-- 复制：通过 copy() 方法实现文件复制，支持覆盖目标文件等选项。
-- 移动：通过 move() 方法实现文件移动，支持原子性操作。
-- 删除：通过 delete() 或 deleteIfExists() 方法删除文件/空目录。
-- 获取文件信息：通过 exists()、isHidden()、size() 等方法获取文件属性。
+- 创建：通过 `createFile()` 创建文件，`createDirectory()` 创建目录。
+- 复制：通过 `copy()` 方法实现文件复制，支持覆盖目标文件等选项。
+- 移动：通过 `move()` 方法实现文件移动，支持原子性操作。
+- 删除：通过 `delete()` 或 `deleteIfExists()` 方法删除文件/空目录。
+- 获取文件信息：通过 `exists()`、`isHidden()`、`size()` 等方法获取文件属性。
 
 ### 五、对象输入输出流及序列化
 
@@ -1540,7 +1399,7 @@ public class DeseriDemo {
 }
 ```
 
-4. 注意点：实体类必须实现 Serializable 接口；writeObject() 用于序列化对象，readObject() 用于反序列化对象；非静态和非瞬时（transient）字段会被序列化。
+4. 注意点：实体类必须实现 `Serializable` 接口；`writeObject()` 用于序列化对象，`readObject()` 用于反序列化对象；非静态和非瞬时（`transient`）字段会被序列化。
 
 ### 六、数据访问对象模式
 
