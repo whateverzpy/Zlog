@@ -893,6 +893,968 @@ class XiaomiRouter implements IRouterProduct {
 @enduml
 ```
 
-## 未完待续
+---
+
+## 06 软件测试及代码质量保障
+
+### 一、软件测试的定义和分类
+
+#### 1. 软件测试的定义
+
+根据 IEEE 定义，软件测试是使用人工或自动的手段来运行或测量被测系统，或静态检查被测系统的过程。
+
+#### 2. 软件测试的目的
+
+校验被测系统是否满足需求，找出实际系统输出和预期结果之间的差异，且软件测试是以需求为中心，并非以缺陷为中心。
+
+#### 3. 软件测试的常见分类
+
+##### 按测试阶段划分
+
+- 单元测试：对应编码阶段，测试对象是单个模块或组件。
+- 集成测试：对应详细设计阶段，测试对象是一组模块或组件。
+- 系统测试：对应概要设计阶段，测试对象是整个系统。
+- 验收测试：对应需求阶段，包括 Alpha 测试和 Beta 测试。
+
+##### 是否查看源代码划分
+
+- 白盒测试：基于程序源代码，已知产品内部工作过程，针对内部结构测试。
+- 黑盒测试：不考虑内部逻辑结构，着眼于程序外部结构，针对软件界面和功能测试。
+- 灰盒测试：介于白盒测试和黑盒测试之间，部分了解内部结构。
+
+### 二、测试用例
+
+#### 1. 测试用例的定义
+
+测试用例（Test Case）是对一项特定软件产品进行测试任务的描述，体现测试方案、方法、技术和策略。其内容包括测试目标、测试环境、输入数据、测试步骤、预期结果、测试脚本等，最终形成文档。简单来说，它是为某个特殊目标编制的一组测试输入、执行条件以及预期结果，用于核实是否满足某个特定软件需求。
+
+#### 2. 测试用例的设计原则
+
+- 正确性：输入用户实际数据验证系统是否满足需求规格说明书，测试点至少覆盖各项功能且正常。
+- 全面性：覆盖所有需求功能项，兼顾正常使用、关联使用、非正常情况（不合理、非法、越界及极限输入数据）操作和环境设置等。
+- 连贯性：用例组织有条理、主次分明，尤其是业务测试用例，每个用例执行粒度适中，仅覆盖特定测点，用例间保持连贯性。
+- 可判定性：测试执行结果的正确性可判定，每个测试用例都有相应期望结果。
+- 可操作性：清晰写明测试操作步骤及对应测试结果。
+
+#### 3. 测试用例的常用设计方法
+
+测试用例的设计方法主要分为两大类，分别是白盒测试法和黑盒测试法。
+
+### 三、白盒测试
+
+#### 1. 白盒测试的定义
+
+白盒测试也称作结构测试或逻辑驱动测试，基于程序的源代码，已知产品的内部工作过程，主要对程序内部结构展开测试，关注程序实现细节，检验程序中的每条通路是否都按照预定要求正确工作。
+
+#### 2. 白盒测试的优势和劣势
+
+##### 优势
+
+- 针对性强，可快速定位 Bug。
+- 函数级别测试，Bug 修复成本低。
+- 有助于了解测试的覆盖程度。
+- 有助于优化代码，预防缺陷。
+
+##### 劣势
+
+- 对测试人员技术要求高。
+- 测试成本高。
+
+#### 3. 逻辑覆盖方法的覆盖指标及其强度比较
+
+##### 覆盖指标（按强度从弱到强排序）
+
+1. 语句覆盖：至少执行程序中所有语句一次，是最弱的逻辑覆盖准则。
+2. 判定覆盖：也称分支覆盖，至少执行程序中每个分支一次，保证每个判定节点取得每种可能结果至少一次。
+3. 条件覆盖：保证程序中每个复合判定表达式中，每个简单判定条件的取真和取假情况至少执行一次。
+4. 判定条件覆盖：同时满足条件覆盖和判定覆盖，既保证每个简单判定条件取真取假至少一次，也保证每个判定节点取得每种可能结果至少一次。
+5. 条件组合覆盖：保证程序每个判定节点中，所有简单判定条件的所有可能取值组合情况至少执行一次。
+6. 路径覆盖：使程序中每一条可能的路径至少执行一次，是最强的逻辑覆盖准则，但一般不可实现。
+
+#### 4. 常用白盒测试用例的设计方法
+
+##### 语句覆盖
+
+设计测试用例时，确保程序中所有语句都至少执行一次。例如针对代码
+
+```java
+int Func1(int a, int b, int x) {
+    if ((a > 1) && (b == 0))
+        x = x / a; 
+    if ((a == 2) || (x > 1))
+        x = x + 1; 
+    return x;
+}
+```
+
+设计测试用例 `a=2，b=0，x=4`，可覆盖所有语句。
+
+##### 判定覆盖
+
+设计测试用例时，保证程序中每个判定节点的每种可能结果（真、假）都至少执行一次。例如针对上述 Func1 函数，设计测试用例 `a=1，b=1，x=2` 和 `a=3，b=0，x=3`，可覆盖所有分支。
+
+##### 条件覆盖
+
+设计测试用例时，确保每个复合判定表达式中的每个简单判定条件都取到真、假两种结果。例如针对 Func1 函数的 4 个简单判定条件（`a>1`、`b==0`、`a==2`、`x>1`），设计测试用例覆盖每个条件的真假情况。
+
+##### 判定条件覆盖
+
+设计测试用例时，同时满足判定覆盖和条件覆盖的要求。例如针对 Func1 函数，设计测试用例既覆盖所有分支，又覆盖每个简单判定条件的真假情况。
+
+##### 条件组合覆盖
+
+设计测试用例时，覆盖每个判定节点中所有简单判定条件的所有可能取值组合。例如针对 Func1 函数的两个复合判定表达式，覆盖每个表达式内简单条件的所有组合情况。
+
+##### 路径覆盖
+
+设计测试用例时，覆盖程序中所有可能的执行路径。例如针对 Func1 函数的 4 条执行路径（L13：p1->p3、L14：p1->p4、L23：p2->p3、L24：p2->p4），设计对应的测试用例。
+
+### 四、黑盒测试
+
+#### 1. 黑盒测试的定义
+
+黑盒测试也称作功能测试或数据驱动测试，着眼于程序外部结构，在完全不考虑程序内部逻辑结构和内部特性的情况下，在程序接口进行测试，仅检查程序功能是否按照需求规格说明书的规定正常使用，是否能适当接收输入数据并产生正确的输出信息。
+
+#### 2. 黑盒测试的优势和劣势
+
+##### 优势
+
+- 方法简单有效。
+- 可以整体测试系统行为。
+- 开发与测试可以并行进行。
+- 对测试人员技术要求相对较低，入门门槛低。
+
+##### 劣势
+
+- 测试覆盖率较低。
+- 直接依赖于需求规格说明书。
+
+#### 3. 常用黑盒测试用例的设计方法
+
+##### 等价类划分
+
+- 核心思想：将输入域划分为若干个等价类，每个等价类中的输入数据对揭示程序错误是等效的，通过测试等价类完成穷尽测试。
+- 等价类分类：
+  - 有效等价类：符合软件规格说明书，合理、有意义的输入数据集合，用于检验系统是否能完成指定功能。
+  - 无效等价类：不符合软件规格说明书，不合理、无意义的输入数据集合，用于考察系统的容错性。
+- 划分原则：
+  1. 输入条件规定取值范围或取值个数，确定一个有效等价类和两个无效等价类。
+  2. 输入条件规定输入值集合，且软件对每个输入值进行不同处理，确定 n 个有效等价类和一个无效等价类。
+  3. 输入条件规定“必须是”的情况，确定一个有效等价类和一个无效等价类。
+  4. 输入为布尔表达式，确定一个有效等价类和一个无效等价类。
+
+##### 边界值分析
+
+- 核心思想：大量缺陷常发生在输入域或输出域的边界上，选择系统边界或边界附近的数据设计测试用例，可提高测试回报率。
+- 边界点：等价类中恰好处于边界，可能导致系统内部处理机制发生变化的点。
+- 设计步骤：先确定每个输入条件的边界点，再组织测试数据设计测试用例，需平衡用例数量、覆盖度、冗余度、缺陷定位能力和复杂度。
+
+##### 场景法
+
+- 核心思想：以事件流为核心，测试软件的主要业务流程、主要功能的正确性和异常处理能力。
+- 测试步骤：
+  1. 定义基本流（正确业务流程）和备选流（出错环节）。
+  2. 基于基本流和备选流定义场景。
+  3. 从场景设计测试用例。
+  4. 输入测试数据，完善测试用例。
+
+---
+
+## 07 集合与策略、迭代器模式
+
+### 一、集合类概述及继承框架
+
+#### 1. 集合的定义及与数组的区别
+
+- 定义：Java 中 `java.util` 包下的容器类，用于存储和操作多个对象，接口定义基本特性，具体类提供不同实现。
+- 与数组的区别：
+  1. 数组长度固定，集合长度可变，支持动态添加/删除元素。
+  2. 数组可存储基本类型（如 `int`）和引用类型（如 `String`），集合只能存储引用类型（基本类型需通过包装类如 `Integer` 存储）。
+
+#### 2. 常用集合类举例
+
+- List：有序、可重复元素的集合，如 `ArrayList`、`LinkedList`。
+- Set：无序、不可重复元素的集合，如 `HashSet`、`TreeSet`。
+- Map：键值对（key-value）映射集合，key 不可重复，每个 key 最多映射一个 value，如 `HashMap`、`TreeMap`。
+
+#### 3. 集合继承框架
+
+![集合集成框架](集合继承框架.png)
+
+- 核心关系：`List` 和 `Set` 继承 `Collection` 接口，`Map` 独立存在，不继承 `Collection` 接口。
+
+### 二、`List` 接口及其标准实现类 `ArrayList` 与 `LinkedList`
+
+#### 1. 特点及异同
+
+| 特性                | `ArrayList`                          | `LinkedList`                          |
+|---------------------|-----------------------------------|------------------------------------|
+| 底层结构            | 动态数组                          | 双向链表                          |
+| 访问效率            | 高（通过下标 `get(index)` 直接访问） | 低（需遍历链表查找节点）          |
+| 增删效率（中间/开头）| 低（需移动后续元素）              | 高（仅修改节点指针）              |
+| 增删效率（末尾）    | 高（直接扩容，无需移动元素）      | 高（直接添加节点）                |
+| 内存占用            | 连续内存，占用较少                | 每个节点含数据和指针，占用较多    |
+
+#### 2. 核心方法
+
+##### (1) `ArrayList`
+
+- 增加元素：`add(E e)`（末尾添加）、`add(int index, E e)`（指定位置添加）
+
+  ```java
+  ArrayList<String> list = new ArrayList<>();
+  list.add("Google"); // 末尾添加
+  list.add(1, "Weibo"); // 索引1位置添加
+  ```
+
+- 删除元素：`remove(int index)`（按索引删除）、`remove(Object o)`（按元素删除）
+
+  ```java
+  list.remove(3); // 删除索引3的元素
+  ```
+
+- 访问元素：`get(int index)`（按索引获取）
+
+  ```java
+  String elem = list.get(1); // 获取索引1的元素
+  ```
+
+- 修改元素：`set(int index, E e)`（修改指定索引元素）
+
+  ```java
+  list.set(2, "Wiki"); // 将索引2的元素改为"Wiki"
+  ```
+
+- 迭代元素：`for` 循环（按索引遍历）、`for-each` 循环
+
+  ```java
+  // for循环
+  for (int i = 0; i < list.size(); i++) {
+      System.out.println(list.get(i));
+  }
+  // for-each循环
+  for (String elem : list) {
+      System.out.println(elem);
+  }
+  ```
+
+##### (2) `LinkedList`
+
+- 增加元素：`add(E e)`（末尾）、`addFirst(E e)`（开头）、`add(int index, E e)`（指定位置）
+
+  ```java
+  LinkedList<String> list = new LinkedList<>();
+  list.addFirst("Wiki"); // 开头添加
+  list.add(1, "Weibo"); // 索引1位置添加
+  ```
+
+- 删除元素：`removeFirst()`（开头）、`removeLast()`（末尾）、`remove(int index)`（按索引）
+
+  ```java
+  list.removeFirst(); // 删除开头元素
+  ```
+
+- 访问元素：`getFirst()`（开头）、`getLast()`（末尾）、`get(int index)`（按索引）
+
+  ```java
+  String first = list.getFirst(); // 获取开头元素
+  ```
+
+- 修改元素：`set(int index, E e)`（修改指定索引元素）
+
+  ```java
+  list.set(2, "Wiki"); // 修改索引2的元素
+  ```
+
+- 迭代元素：`for` 循环、`for-each` 循环（同 ArrayList）
+
+### 三、Set与Map接口
+
+#### 1. 特点及异同
+
+| 特性                | Set                                | Map                                |
+|---------------------|-----------------------------------|------------------------------------|
+| 存储结构            | 单元素集合                        | 键值对（key-value）映射            |
+| 元素特性            | 无序、不可重复                    | key 无序、不可重复；value 可重复    |
+| 核心接口方法        | 继承 `Collection` 接口方法        | 独立方法（如 `put`、`get`）        |
+| 关联实现类          | `HashSet` 对应 `HashMap`（底层依赖） | `HashMap`、`TreeMap`               |
+
+#### 2. Set 核心方法（以 `HashSet` 为例）
+
+- 添加元素：`add(E e)`（重复元素不会被添加）
+
+  ```java
+  HashSet<String> set = new HashSet<>();
+  set.add("Google");
+  set.add("Amazon"); // 重复添加无效
+  ```
+
+- 删除元素：`remove(Object o)`（删除指定元素）、`clear()`（清空集合）
+
+  ```java
+  set.remove("Taobao"); // 删除元素
+  set.clear(); // 清空所有元素
+  ```
+
+- 访问元素：无直接按索引访问方法，需通过迭代（`for-each`）
+
+  ```java
+  for (String elem : set) {
+      System.out.println(elem);
+  }
+  ```
+
+- 判断元素是否存在：`contains(Object o)`（返回 `boolean`）
+
+  ```java
+  boolean exists = set.contains("Taobao"); // 判断是否包含该元素
+  ```
+
+- 计算大小：`size()`（返回元素个数）
+
+#### 3. Map 核心方法（以 `HashMap` 为例）
+
+- 添加元素：`put(K key, V value)`（key 重复时覆盖原 value）
+
+  ```java
+  HashMap<Integer, String> map = new HashMap<>();
+  map.put(1, "Google");
+  map.put(2, "Amazon");
+  ```
+
+- 删除元素：`remove(Object key)`（按 key 删除键值对）、`clear()`（清空）
+
+  ```java
+  map.remove(4); // 删除 key=4 的键值对
+  ```
+
+- 访问元素：`get(Object key)`（按 key 获取 value，无此 key 返回 `null`）
+
+  ```java
+  String value = map.get(3); // 获取 key=3 对应的 value
+  ```
+
+- 迭代元素：遍历 key（`keySet()`）、遍历 value（`values()`）、遍历键值对
+
+  ```java
+  // 遍历 key
+  for (Integer key : map.keySet()) {
+      System.out.println("key: " + key + ", value: " + map.get(key));
+  }
+  // 遍历 value
+  for (String val : map.values()) {
+      System.out.println(val);
+  }
+  ```
+
+- 计算大小：`size()`（返回键值对个数）
+
+### 四、策略模式
+
+#### 1. 目的、应用场景及实现
+
+- 目的：在多种相似算法场景下，避免多重 `if-else`，使算法可独立于客户灵活切换。
+- 应用场景：多种方案可选的场景（如会员折扣计算、出行方式选择、排序算法切换）。
+- 实现核心：定义算法家族（策略），封装每个算法，使算法可相互替换。
+
+#### 2. 三大角色及 UML 结构图
+
+##### 角色作用
+
+- 抽象策略（Strategy）：接口/抽象类，定义所有具体策略的统一接口。
+- 具体策略（ConcreteStrategy）：实现抽象策略，封装具体算法。
+- 环境（Context）：持有抽象策略引用，提供接口供客户端调用策略。
+
+##### UML 结构图
+
+```plantuml
+@startuml
+interface Strategy {
+  + {abstract} strategyMethod():void
+}
+
+class ConcreteStrategyA {
+  + strategyMethod():void
+}
+
+class ConcreteStrategyB {
+  + strategyMethod():void
+}
+
+class Context {
+  - strategy:Strategy
+  + setStrategy(Strategy strategy):void
+  + getStrategy():Strategy
+  + strategyMethod():void
+}
+
+' 实现关系
+ConcreteStrategyA ..|> Strategy
+ConcreteStrategyB ..|> Strategy
+
+' 关联关系
+Context o-- Strategy
+
+note left of Context::strategyMethod
+public void strategyMethod() {
+    strategy.strategyMethod();
+}
+end note
+@enduml
+```
+
+#### 3. 算法与对象分离的解决方案
+
+- 定义一系列算法，每个算法封装为独立的具体策略类。
+- 环境类持有抽象策略引用，不直接实现算法。
+- 客户端选择具体策略类，通过环境类调用算法，实现算法与客户代码分离。
+
+#### 4. 优缺点
+
+- 优点：
+  1. 算法可自由切换，支持动态替换。
+  2. 避免多重条件判断，代码结构清晰。
+  3. 扩展性好，新增算法只需添加具体策略类（符合开闭原则）。
+  4. 高内聚、低耦合，算法封装独立。
+- 缺点：
+  1. 客户端需了解所有策略类，才能选择合适算法。
+  2. 策略类数量可能过多，增加系统复杂度。
+
+### 五、迭代器模式
+
+#### 1. 目的、应用场景及实现
+
+- 目的：提供统一方式顺序访问聚合对象（如集合）的元素，不暴露对象内部结构。
+- 应用场景：需遍历不同聚合结构（如 `ArrayList`、`HashSet`）、需多种遍历方式、需隐藏聚合对象内部实现的场景。
+- 实现核心：将遍历行为封装为迭代器类，聚合对象提供获取迭代器的方法。
+
+#### 2. 聚合对象与遍历行为分离的解决方案
+
+- 引入迭代器接口（如 `Iterator`），定义遍历核心方法（`hasNext()`、`next()`、`remove()`）。
+- 聚合类（如 `ArrayList`、`HashSet`）实现迭代器接口，提供专属迭代器实例。
+- 客户端通过迭代器遍历聚合对象，无需关心聚合对象的底层结构（数组/链表）。
+
+#### 3. 效果（优缺点）
+
+- 优点：
+  1. 支持多种遍历方式（如正向、反向），迭代器可灵活扩展。
+  2. 简化聚合类，遍历逻辑封装在迭代器中，聚合类专注于数据存储。
+  3. 同一聚合对象可同时存在多个遍历（多个迭代器独立工作）。
+  4. 新增聚合类或迭代器类无需修改原有代码（符合开闭原则）。
+- 缺点：
+  1. 简单遍历场景（如数组）中，迭代器方式繁琐、效率较低。
+  2. 增加系统类数量（每个聚合类可能对应一个迭代器类）。
+
+---
+
+## 08 流与输入输出
+
+### 一、流
+
+#### 1. 流的概念
+
+流是一组有序的数据序列，是输入输出设备的抽象，用于在 Java 程序中实现数据在不同设备（文件、网络、内存等）之间的传输。
+
+#### 2. 流的分类
+
+- 按方向划分：输入流（数据从设备流向程序）、输出流（数据从程序流向设备）。
+- 按内容（数据单位）划分：字节流（基本单位为字节，可处理文本、图片、声音、视频等多种类型数据）、字符流（基本单位为字符，仅限处理纯文本数据）。
+
+### 二、输入输出流
+
+#### 1. Java 的系统流
+
+- System.in：标准输入流，默认设备是键盘。
+- System.out：标准输出流，默认设备是控制台。
+
+#### 2. 读取控制台输入
+
+需通过 BufferedReader 包装 System.in 来创建字符流，核心代码如下：
+
+```java
+import java.io.*;
+public class BRRead {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        // 读取单个字符（直到输入 'q' 退出）
+        char c;
+        do {
+            c = (char) br.read();
+            System.out.println(c);
+        } while (c != 'q');
+        // 读取字符串（直到输入 'end' 退出）
+        String str;
+        do {
+            str = br.readLine();
+            System.out.println(str);
+        } while (!str.equals("end"));
+        br.close();
+    }
+}
+```
+
+#### 3. 文件的输入输出
+
+核心使用 FileInputStream（文件输入流）和 FileOutputStream（文件输出流），示例代码如下：
+
+```java
+import java.io.*;
+public class FileStreamTest {
+    public static void main(String[] args) throws IOException {
+        File f = new File("a.txt");
+        // 写入文件
+        FileOutputStream fop = new FileOutputStream(f);
+        OutputStreamWriter writer = new OutputStreamWriter(fop, "UTF-8");
+        writer.append("中文输入");
+        writer.append("\r\n");
+        writer.append("English");
+        writer.close();
+        fop.close();
+        // 读取文件
+        FileInputStream fip = new FileInputStream(f);
+        InputStreamReader reader = new InputStreamReader(fip, "UTF-8");
+        StringBuffer sb = new StringBuffer();
+        while (reader.ready()) {
+            sb.append((char) reader.read());
+        }
+        System.out.println(sb.toString());
+        reader.close();
+        fip.close();
+    }
+}
+```
+
+### 三、Java 流继承框架
+
+#### 1. 四大流家族的根节点
+
+- 字节流：输入流根节点为 InputStream，输出流根节点为 OutputStream。
+- 字符流：输入流根节点为 Reader，输出流根节点为 Writer。
+
+#### 2. 流的关闭要求
+
+所有流都实现了 java.io.Closeable 接口，均包含 close() 方法。流使用结束后必须调用 close() 关闭，避免耗费系统资源。
+
+### 四、操作文件
+
+#### 1. Path 和 Files 类核心代码示例
+
+```java
+import java.nio.file.*;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+public class FileOperation {
+    public static void main(String[] args) throws IOException {
+        Path path = Paths.get("test.txt");
+        // 读取文件
+        byte[] bytes = Files.readAllBytes(path);
+        String content = Files.readString(path, StandardCharsets.UTF_8);
+        List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
+        // 写入文件
+        Files.writeString(path, "测试内容", StandardCharsets.UTF_8);
+        Files.write(path, lines, StandardCharsets.UTF_8);
+        // 创建文件和目录
+        Files.createFile(Paths.get("newFile.txt"));
+        Files.createDirectory(Paths.get("newDir"));
+        // 复制、移动、删除文件
+        Path fromPath = Paths.get("test.txt");
+        Path toPath = Paths.get("copy.txt");
+        Files.copy(fromPath, toPath, StandardCopyOption.REPLACE_EXISTING);
+        Files.move(fromPath, toPath, StandardCopyOption.ATOMIC_MOVE);
+        Files.deleteIfExists(path);
+        // 获取文件信息
+        boolean exists = Files.exists(path);
+        boolean isHidden = Files.isHidden(path);
+        long size = Files.size(path);
+    }
+}
+```
+
+#### 2. 主要功能
+
+- 创建：通过 createFile() 创建文件，createDirectory() 创建目录。
+- 复制：通过 copy() 方法实现文件复制，支持覆盖目标文件等选项。
+- 移动：通过 move() 方法实现文件移动，支持原子性操作。
+- 删除：通过 delete() 或 deleteIfExists() 方法删除文件/空目录。
+- 获取文件信息：通过 exists()、isHidden()、size() 等方法获取文件属性。
+
+### 五、对象输入输出流及序列化
+
+#### 1. 序列化及反序列化的概念
+
+- 序列化：把对象转换为字节序列的过程。
+- 反序列化：把字节序列恢复为对象的过程。
+
+#### 2. 对象序列化的步骤及简单实现
+
+1. 实体类需实现 Serializable 接口：
+
+```java
+import java.io.Serializable;
+public class Person implements Serializable {
+    private String name;
+    private int age;
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+    @Override
+    public String toString() {
+        return "Person{" + "name='" + name + '\'' + ", age=" + age + '}';
+    }
+}
+```
+
+2. 序列化（写入对象）：
+
+```java
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+public class SeriDemo {
+    public static void main(String[] args) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("person.dat"))) {
+            Person p1 = new Person("zhangsan", 30);
+            oos.writeObject(p1);
+            System.out.println("序列化成功：" + p1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+3. 反序列化（读取对象）：
+
+```java
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+public class DeseriDemo {
+    public static void main(String[] args) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("person.dat"))) {
+            Person zhangsan = (Person) ois.readObject();
+            System.out.println("反序列化成功：" + zhangsan);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+4. 注意点：实体类必须实现 Serializable 接口；writeObject() 用于序列化对象，readObject() 用于反序列化对象；非静态和非瞬时（transient）字段会被序列化。
+
+### 六、数据访问对象模式
+
+#### 1. 用处
+
+将低级的数据访问操作从高级的业务服务中分离，降低耦合度。
+
+#### 2. 参与者
+
+- 数据访问对象接口：定义模型对象的标准操作（如增删改查）。
+- 数据访问对象实体类：实现上述接口，负责从数据源（数据库、XML 等）获取数据。
+- 模型对象/数值对象：普通 Java 对象，包含 get/set 方法，用于存储检索到的数据。
+
+#### 3. 优缺点
+
+- 优点：隔离数据层，数据访问相关错误仅在 DAO 层抛出，不影响服务层和实体类。
+- 缺点：增加额外代码量（实际应用中可忽略）。
+
+---
+
+## 09 Swing 图形用户界面
+
+### 一、Swing 框架
+
+#### 1. 核心元素
+
+Swing GUI 由**组件**和**容器**两类元素构成，二者形成包含层级关系。
+
+#### 2. 组件继承体系
+
+所有 Swing 组件均继承于 `JComponent` 类，`JComponent` 类继承于 `Component` 类及其子类 `Container`，提供组件通用功能。常见组件包括标签 `JLabel`、按键 `JButton`、输入框 `JTextField`、复选框 `JCheckBox`、列表 `JList` 等。
+
+#### 3. 容器分类
+
+- 重量级容器（顶层容器）：不继承于 `JComponent`，包括 `JFrame`、`JApplet`、`JDialog`。不能被其他容器包含，仅作为界面最顶层容器容纳其他组件。
+- 轻量级容器（中间容器）：继承于 `JComponent`，包括 `JPanel`、`JScrollPane` 等。用于整合相关组件，本身也是组件，必须包含在其他容器中。
+
+#### 4. 布局管理器的作用
+
+布局管理器用于控制容器中组件的位置和排列方式，无需手动计算组件坐标和间距。若禁用布局管理器（`setLayout(null)`），需通过 `setBounds()` 手动设置组件位置与大小。
+
+常见布局管理器及特性：
+
+- `FlowLayout`：流式布局，从左到右居中排列，一行放不下则换行。
+- `BorderLayout`：边框布局，分为东、南、西、北、中心五个方位。
+- `GridLayout`：网格式布局，组件均匀分布在网格中。
+- `GridBagLayout`：灵活网格式布局，支持不同大小组件。
+- `BoxLayout`：盒布局，组件水平或竖直排列。
+- `SpringLayout`：按约束条件组织组件。
+
+示例代码（设置布局管理器）：
+
+```java
+// 流式布局
+JPanel panel = new JPanel();
+panel.setLayout(new FlowLayout());
+panel.add(new JButton("按钮 1"));
+panel.add(new JButton("按钮 2"));
+
+// 禁用布局管理器，手动设置位置
+JPanel panel2 = new JPanel();
+panel2.setLayout(null);
+JButton b1 = new JButton("按钮 1");
+b1.setBounds(50, 30, 80, 30); // 横坐标、纵坐标、宽度、高度
+panel2.add(b1);
+```
+
+### 二、Swing 图形处理与绘制颜色原理
+
+#### 1. JFrame 特性
+
+- `JFrame` 是 Swing 中描述顶层窗口的类，扩展自 AWT 的 `Frame` 库。
+- 修饰部件（按钮、标题栏、图标等）由用户窗口系统绘制，开发者只需关注内容窗格（content pane），所有组件会自动添加到内容窗格中。
+- 窗体默认大小为 0×0 像素，需通过 `setSize()` 或 `pack()` 设定大小，调用 `setVisible(true)` 后才会显示。
+
+#### 2. 绘制 2D 图形
+
+1. 通过将 `Graphics` 对象强制转换为 `Graphics2D` 对象，使用 Java 2D 库绘制图形。
+2. Java 2D 库支持的几何图形类：`Line2D`（直线）、`Rectangle2D`（矩形）、`Ellipse2D`（椭圆），采用浮点坐标，推荐使用 `Double` 子类避免类型转换。
+3. 核心方法：`draw()`（绘制图形边框）、`fill()`（填充图形内部）。
+
+示例代码（绘制矩形）：
+
+```java
+class DrawComponent extends JComponent {
+    public static final int DEFAULT_WIDTH = 400;
+    public static final int DEFAULT_HEIGHT = 400;
+
+    public void paintComponent(Graphics g) {
+        var g2 = (Graphics2D) g;
+        double leftX = 100;
+        double topY = 100;
+        double width = 200;
+        double height = 150;
+        var rect = new Rectangle2D.Double(leftX, topY, width, height);
+        g2.draw(rect); // 绘制矩形边框
+    }
+
+    public Dimension getPreferredSize() {
+        return new Dimension(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+    }
+}
+```
+
+#### 3. 颜色使用原理
+
+1. 通过 `Graphics2D` 的 `setPaint()` 方法设置绘制颜色，后续绘制操作均使用该颜色。
+2. 颜色来源：`Color` 类预定义 13 种标准颜色（如 `Color.RED`），或通过 RGB 三色分量（0~255 整数）创建自定义颜色。
+3. 切换颜色需重新调用 `setPaint()` 方法。
+
+示例代码（设置颜色）：
+
+```java
+// 使用预定义颜色绘制边框
+g2.setPaint(Color.RED);
+g2.draw(rect);
+
+// 使用自定义颜色填充矩形
+g2.setPaint(new Color(147, 112, 219)); // RGB 分量
+g2.fill(rect);
+```
+
+### 三、事件机制
+
+#### 1. 核心概念
+
+事件处理机制包含三类对象：
+
+- 事件（Event）：用户对组件的一次操作（如点击按钮、输入键盘），对应事件类（`ActionEvent`、`MouseEvent` 等）。
+- 事件源（Event Source）：事件发生的组件（如按钮 `JButton`、文本框 `JTextField`）。
+- 事件监听器（Event Listener）：实现监听器接口（如 `ActionListener`）的类实例，用于响应事件。
+
+#### 2. 工作流程
+
+1. 事件源注册监听器（通过 `addXxxListener()` 方法）。
+2. 用户操作触发事件，事件源创建事件对象并发送给所有注册的监听器。
+3. 监听器调用对应方法（如 `actionPerformed()`），利用事件对象信息处理事件。
+
+#### 3. 代码示例（按钮点击事件）
+
+```java
+public class ButtonTest {
+    public static void main(String[] args) {
+        // 创建事件源（按钮）
+        JButton button = new JButton("OK");
+        // 创建监听器并注册
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 事件处理逻辑
+                System.out.println("按钮被点击了！");
+                System.out.println("事件源：" + e.getSource());
+            }
+        });
+
+        // 创建窗口并添加按钮
+        JFrame frame = new JFrame("事件示例");
+        frame.add(button);
+        frame.setSize(200, 150);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+    }
+}
+```
+
+#### 4. 简洁写法（Lambda 表达式）
+
+```java
+// 适用于简单事件处理逻辑
+exitButton.addActionListener(event -> System.exit(0));
+
+// 多个关联按钮的辅助方法
+public void makeButton(String name, Color backgroundColor) {
+    var button = new JButton(name);
+    buttonPanel.add(button);
+    button.addActionListener(event -> buttonPanel.setBackground(backgroundColor));
+}
+```
+
+### 四、Swing 基本用户组件
+
+#### 1. 文本输入组件（继承自 `JTextComponent` 抽象类）
+
+- 文本域（`JTextField`）：接收单行文本，常用方法 `setText()`（设置文本）、`getText()`（获取文本）、`trim()`（去除首尾空格）。
+- 文本区（`JTextArea`）：接收多行文本，支持回车键换行，构造时可指定行数和列数；需滚动条时，需嵌套在 `JScrollPane` 中。
+- 密码域（`JPasswordField`）：接收单行文本，输入内容以回显字符（如 *）显示，通过 `getPassword()` 方法获取密码（返回 `char[]`，而非 `String`，更安全）。
+
+示例代码（文本区与滚动窗格）：
+
+```java
+int TEXTAREA_ROWS = 5;
+int TEXTAREA_COLUMNS = 20;
+var textArea = new JTextArea(TEXTAREA_ROWS, TEXTAREA_COLUMNS);
+var scrollPane = new JScrollPane(textArea); // 为文本区添加滚动条
+```
+
+#### 2. 选择组件
+
+##### 复选框（`JCheckBox`）
+
+- 用于“是/否”选择，自带标识标签，构造时指定标签文本。
+- 常用方法：`setSelected(true)`（默认选中）、`isSelected()`（获取选中状态）。
+
+代码示例：
+
+```java
+JCheckBox bold = new JCheckBox("Bold");
+bold.setSelected(true); // 默认选中
+boolean isBold = bold.isSelected(); // 获取选中状态
+```
+
+##### 单选按钮（`JRadioButton`）
+
+- 多个选项中仅能选中一项，需通过 `ButtonGroup` 分组管理。
+- 常用方法：`setActionCommand()`（设定动作命令）、`getSelection().getActionCommand()`（获取选中项命令）。
+
+代码示例：
+
+```java
+// 创建单选按钮
+JRadioButton small = new JRadioButton("小杯");
+JRadioButton medium = new JRadioButton("中杯");
+JRadioButton large = new JRadioButton("大杯");
+
+// 分组管理
+ButtonGroup sizeGroup = new ButtonGroup();
+sizeGroup.add(small);
+sizeGroup.add(medium);
+sizeGroup.add(large);
+medium.setSelected(true); // 默认选中中杯
+
+// 设定动作命令并监听
+small.setActionCommand("small");
+sizeGroup.addListener(new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent ev) {
+        String choice = sizeGroup.getSelection().getActionCommand();
+        System.out.println("选中：" + choice);
+    }
+});
+```
+
+##### 组合框（`JComboBox`）
+
+- 提供下拉选择列表，支持添加、删除选项和监听选择事件。
+- 常用方法：`addItem()`（添加选项）、`removeItem()`（删除选项）、`getSelectedItem()`（获取选中项）。
+
+代码示例：
+
+```java
+// 创建组合框并添加选项
+JComboBox<String> faceCombo = new JComboBox<>();
+faceCombo.addItem("small");
+faceCombo.addItem("medium");
+faceCombo.addItem("large");
+
+// 监听选择事件
+faceCombo.addActionListener(event -> {
+    String selected = faceCombo.getSelectedItem().toString();
+    label.setText(selected);
+});
+
+// 删除选项
+faceCombo.removeItem("small");
+faceCombo.removeItemAt(0); // 按索引删除
+```
+
+##### 菜单（`JMenuBar`、`JMenu`、`JMenuItem`）
+
+- 菜单栏（`JMenuBar`）位于窗口顶部，包含下拉菜单（`JMenu`），菜单中可添加菜单项（`JMenuItem`）、分隔符和子菜单。
+
+代码示例：
+
+```java
+// 创建菜单栏并添加到窗口
+var menuBar = new JMenuBar();
+frame.setJMenuBar(menuBar);
+
+// 创建菜单和菜单项
+var fileMenu = new JMenu("File");
+var editMenu = new JMenu("Edit");
+menuBar.add(fileMenu);
+menuBar.add(editMenu);
+
+var pasteItem = new JMenuItem("Paste");
+editMenu.add(pasteItem);
+editMenu.addSeparator(); // 添加分隔符
+
+// 子菜单
+var optionMenu = new JMenu("Options");
+var readonlyItem = new JCheckBoxMenuItem("Read-only");
+optionMenu.add(readonlyItem);
+editMenu.add(optionMenu);
+```
+
+### 五、MVC 模式
+
+#### 1. 各部分作用
+
+- 模型（Model）：存储组件的内容数据（如文本域中的文本、按钮的选中状态），提供数据操作方法（更新、查询），无用户界面。
+- 视图（View）：显示模型中的内容，一个模型可对应多个视图，模型更新时视图需同步刷新。
+- 控制器（Controller）：隔离视图与模型，处理用户输入事件（如点击、输入），决定将事件转化为对模型或视图的更改。
+
+#### 2. 工作流程
+
+1. 视图向用户展示模型中的内容。
+2. 用户通过视图触发事件，控制器接收并处理事件。
+3. 控制器根据事件类型，调用模型的方法更新数据，或直接调整视图。
+4. 模型数据更新后，通知所有关联视图同步刷新显示。
+
+#### 3. 简单案例分析（文本框输入案例）
+
+- 模型：存储文本框中的字符串数据，提供 `setContent()`（设置文本）、`getContent()`（获取文本）方法。
+- 视图：`JTextField` 组件，显示模型中的字符串。
+- 控制器：实现 `ActionListener` 接口，监听文本框的输入事件，调用模型的 `setContent()` 方法更新数据，模型通知视图刷新显示最新文本。
 
 {{< ai-generated >}}
