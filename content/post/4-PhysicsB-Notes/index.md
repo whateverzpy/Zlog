@@ -73,7 +73,7 @@ $$
 
 ### 麦克斯韦气体分子速率分布律
 
-#### 最概然速率 \$v_p\$
+#### 最概然速率 $v_p$
 
 $$
 \left.\frac{\mathrm{d}f(v)}{\mathrm{d}v}\right|_{v=v_p}=0
@@ -85,7 +85,7 @@ $$
 
 其中 $M$ 为气体的摩尔质量。
 
-#### 平均速率 \$\overline{v}\$
+#### 平均速率 $\overline{v}$
 
 $$
 \overline{v}=\int_0^{+\infty}vf(v)\ \mathrm{d}v
@@ -95,7 +95,7 @@ $$
 \overline{v}=\sqrt{\frac{8kT}{\pi m}}=\sqrt{\frac{8RT}{\pi M}}
 $$
 
-#### 方均根速率 \$v\_{rms}\$
+#### 方均根速率 $v_{rms}$
 
 $$
 \overline{v^2}=\int_0^{+\infty}v^2f(v)\ \mathrm{d}v

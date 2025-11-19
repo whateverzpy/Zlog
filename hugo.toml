@@ -20,6 +20,8 @@ enableEmoji = true
   ]
   homepage = [
     {type = "search"},
+    {type = "tag-cloud"},
+    {type = "categories"}
   ]
 
 [Params.Sidebar]
