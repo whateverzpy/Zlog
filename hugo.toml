@@ -1,4 +1,4 @@
-baseURL = 'https://whateverzpy.github.io/Zlog/'
+baseURL = 'https://zlog.whateverz.workers.dev'
 languageCode = 'zh-CN'
 title = 'WhateverZ'
 theme = "hugo-theme-stack"
