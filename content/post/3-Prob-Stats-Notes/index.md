@@ -137,7 +137,7 @@ $$
 
 ## 数理统计中的三大分布
 
-### \$\chi^2\$ 分布
+### $\chi^2$ 分布
 
 设 $X_1,X_2,\dots,X_n$ 为 $n$ 个 $(n\geq1)$ 相互独立的随机变量，它们都服从标准正态分布 $N(0,1)$。
 
@@ -151,7 +151,7 @@ $$
 E(Y)=n,D(Y)=2n
 $$
 
-### \$t\$ 分布
+### $t$ 分布
 
 设随机变量 $X,Y$ 相互独立，且 $X\sim N(0,1),Y\sim\chi^2(n)$。
 
@@ -161,7 +161,7 @@ $$
 
 则随机变量 $T$ 服从自由度为 $n$ 的 $t$ 分布，记作 $T\sim t(n)$。
 
-### \$F\$ 分布
+### $F$ 分布
 
 设随机变量 $X,Y$ 相互独立，且 $X\sim\chi^2(n_1),Y\sim\chi^2(n_2)$。
 
@@ -231,7 +231,7 @@ $$
 
 设 $x_1, x_2, \dots, x_n$ 是来自总体 $N(\mu, \sigma^2)$ 的一个样本，$\overline{x}, s^2$ 分别为样本均值和样本方差。
 
-### \$\sigma^2\$ 已知
+### $\sigma^2$ 已知
 
 $\mu$ 的一个置信区间为
 
@@ -239,7 +239,7 @@ $$
 \left( \overline{x} - u_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}, \overline{x} + u_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}} \right)
 $$
 
-### \$\sigma^2\$ 未知
+### $\sigma^2$ 未知
 
 $\mu$ 的一个置信区间为
 
@@ -247,7 +247,7 @@ $$
 \left( \overline{x} - t_{\frac{\alpha}{2}}(n-1) \frac{s}{\sqrt{n}}, \overline{x} + t_{\frac{\alpha}{2}}(n-1) \frac{s}{\sqrt{n}} \right)
 $$
 
-### \$\sigma^2\$ 的置信区间
+### $\sigma^2$ 的置信区间
 
 $$
 \left( \frac{(n-1)s^2}{\chi^2_{\frac{\alpha}{2}}(n-1)}, \frac{(n-1)s^2}{\chi^2_{1-\frac{\alpha}{2}}(n-1)} \right)
@@ -268,7 +268,7 @@ $$
 对于泊松分布，若 $X\sim P(\lambda_1),Y\sim P(\lambda_2)$，则 $X+Y\sim P(\lambda_1+\lambda_2)$。\
 对于正态分布，若 $X\sim N(0,\sigma^2)$，则 $E(|X|)=\sigma\sqrt{\frac{2}{\pi}},E(X^2)=\sigma^2$。
 
-## \$\Gamma\$ 函数
+## $\Gamma$ 函数
 
 $$
 \Gamma(z) = \int_0^\infty t^{z-1} e^{-t} \ \mathrm{d}t
