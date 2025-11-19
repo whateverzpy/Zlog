@@ -8,7 +8,7 @@ enableRobotsTXT = true
 enableEmoji = true
 
 [Params]
-  favicon = "/Zlog/favicon.png"
+  favicon = "/favicon.svg"
 
 [Params.DateFormat]
   published = "2006-01-02"
