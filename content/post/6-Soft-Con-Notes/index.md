@@ -6,12 +6,10 @@ date = '2025-11-17T17:33:08+08:00'
 title = '软件构造期末复习知识点'
 description = '软件构造一些重要概念和知识点的归纳总结'
 tags = ['Java', '软件构造', '设计模式']
-lastmod = '2025-11-18T14:11:00+08:00'
+lastmod = '2025-11-19T14:16:00+08:00'
 +++
 
 ## 01 面向对象的软件构造概述
-
-核心结论：软件构造需遵循特定流程与目标，面向对象思想通过三大特性解决传统开发问题，与面向过程方法形成关键差异。
 
 ### 一、软件构造基本流程及目标
 
@@ -54,8 +52,6 @@ lastmod = '2025-11-18T14:11:00+08:00'
 ---
 
 ## 02 Java 语言基础
-
-核心结论：聚焦 Java 基本数据类型与常量、数组、Java 虚拟机与垃圾回收三大核心模块，涵盖关键定义、用法、规则及特点。
 
 ### 一、Java 基本数据类型与常量
 
@@ -163,7 +159,7 @@ Java 采用隐式分配器实现垃圾回收，与 C/C++ 的显式分配器形�
 - 一个类可声明多个构造方法（重载），参数列表不同。
 - 若未显式定义构造方法，系统会自动生成默认构造方法（无参、空实现）。
 
-#### 5. this 关键字的用法
+#### 5. `this` 关键字的用法
 
 - 作用：区分类的成员变量与方法参数（同名时），如 `this.name = name`。
 - 与 `super` 关键字的异同：
@@ -181,7 +177,7 @@ Java 采用隐式分配器实现垃圾回收，与 C/C++ 的显式分配器形�
 | `protected` | √        | √          | √      |            |
 | `public` | √          | √          | √      | √          |
 
-### 四、static 修饰符
+### 四、`static` 修饰符
 
 #### 1. 类属性的特点与好处
 
@@ -990,7 +986,7 @@ int Func1(int a, int b, int x) {
 
 #### 2. 核心方法
 
-##### (1) `ArrayList`
+##### `ArrayList`
 
 - 增加元素：`add(E e)`（末尾添加）、`add(int index, E e)`（指定位置添加）
 
@@ -1031,7 +1027,7 @@ int Func1(int a, int b, int x) {
   }
   ```
 
-##### (2) `LinkedList`
+##### `LinkedList`
 
 - 增加元素：`add(E e)`（末尾）、`addFirst(E e)`（开头）、`add(int index, E e)`（指定位置）
 
@@ -1296,7 +1292,7 @@ public class FileStreamTest {
 
 ### 四、操作文件
 
-#### 1. Path 和 Files 类核心代码示例
+#### 1. `Path` 和 `Files` 类核心代码示例
 
 ```java
 import java.nio.file.*;
@@ -1469,7 +1465,7 @@ panel2.add(b1);
 
 ### 二、Swing 图形处理与绘制颜色原理
 
-#### 1. JFrame 特性
+#### 1. `JFrame` 特性
 
 - `JFrame` 是 Swing 中描述顶层窗口的类，扩展自 AWT 的 `Frame` 库。
 - 修饰部件（按钮、标题栏、图标等）由用户窗口系统绘制，开发者只需关注内容窗格（content pane），所有组件会自动添加到内容窗格中。
@@ -1715,5 +1711,774 @@ editMenu.add(optionMenu);
 - 模型：存储文本框中的字符串数据，提供 `setContent()`（设置文本）、`getContent()`（获取文本）方法。
 - 视图：`JTextField` 组件，显示模型中的字符串。
 - 控制器：实现 `ActionListener` 接口，监听文本框的输入事件，调用模型的 `setContent()` 方法更新数据，模型通知视图刷新显示最新文本。
+
+---
+
+## 10 多线程
+
+### 一、进程与线程
+
+#### 1. 核心结论
+
+进程是操作系统资源分配的基本单位，线程是操作系统调度执行的最小单位，二者在资源占用、层级关系等方面存在关键差异。
+
+#### 2. 进程与线程的区别
+
+| 进程（Process） | 线程（Thread） |
+| --- | --- |
+| 重量级 | 轻量级 |
+| 一个应用可以包含多个进程 | 一个进程可以包含多个线程 |
+| 多个进程间不共享内存 | 一个进程的多个线程间共享内存 |
+| 表现为虚拟机 | 表现为虚拟CPU |
+
+### 二、Java 中对线程的控制
+
+#### 1. 核心结论
+
+Java 中线程有 6 种状态，支持两种无返回值的创建方式（`Runnable` 更常用），提供了丰富的线程控制方法，需区分不同状态的切换逻辑和方法归属。
+
+#### 2. 线程的 6 种状态
+
+1. 新建状态（NEW）：线程对象创建后未启动。
+2. 可运行状态（RUNNABLE）：调用 `start()` 方法后，等待 CPU 时间片。
+3. 运行状态（RUNNING）：获取 CPU 时间片后执行 `run()` 方法逻辑。
+4. 阻塞状态（BLOCKED）：试图获取对象锁时被其他线程持有。
+5. 等待状态（WAITING）：通过 `wait()`、`join()` 等方法主动进入，需被唤醒。
+6. 计时等待状态（TIMED_WAITING）：通过 `wait(time)`、`sleep(time)` 等进入，超时自动恢复。
+7. 终止状态（TERMINATED）：`run()` 方法正常退出或异常终止。
+
+#### 3. 线程的两种建立方式
+
+1. 继承 `Thread` 类：重写 `run()` 方法，直接调用 `start()` 启动。
+
+   ```java
+   class Thread1 extends Thread {
+       @Override
+       public void run() {
+           System.out.println("New Thread");
+       }
+   }
+   // 启动
+   new Thread1().start();
+   ```
+
+2. 实现 `Runnable` 接口：实现 `run()` 方法，通过 `Thread` 实例启动。
+
+   ```java
+   class Thread2 implements Runnable {
+       @Override
+       public void run() {
+           System.out.println("New Thread");
+       }
+   }
+   // 启动
+   new Thread(new Thread2()).start();
+   ```
+
+#### 4. `Runnable` 更常用的原因
+
+1. 任务与运行机制解耦，降低开销。
+2. 更容易实现多线程资源共享。
+3. 避免 Java 单继承的局限。
+
+#### 5. Interrupt 用法
+
+1. 作用：给线程设置中断标志（`boolean` 类型），不会立刻打断线程。
+2. 线程需主动检查标志（如 `isInterrupted()`），决定是否响应中断。
+3. 若线程处于等待/计时等待状态，调用 `interrupt()` 会抛出 `InterruptedException` 异常。
+
+#### 6. 等待状态与计时等待状态的区别
+
+1. 等待状态（WAITING）：需通过 `notify()`/`notifyAll()` 唤醒，无超时时间。
+2. 计时等待状态（TIMED_WAITING）：设置超时时间，超时后自动恢复，无需唤醒。
+
+#### 7. 守护线程的作用
+
+1. 为其他线程提供服务（如垃圾回收器 GC）。
+2. 通过 `setDaemon(true)` 标识，必须在 `start()` 前调用。
+3. 主线程结束或自身 `run()` 方法执行完后自动结束。
+
+#### 8. `Thread` 类与 `Object` 中的线程相关方法区分
+
+| 归属类 | 核心方法 | 说明 |
+| --- | --- | --- |
+| `Thread` 类 | `start()` | 启动线程，进入就绪状态 |
+| `Thread` 类 | `run()` | 线程执行逻辑，不可直接调用 |
+| `Thread` 类 | `sleep(time)` | 静态方法，休眠时不释放锁 |
+| `Thread` 类 | `join()`/`join(time)` | 让调用者线程阻塞，等待目标线程完成 |
+| `Thread` 类 | `interrupt()` | 设置线程中断标志 |
+| `Object` 类 | `wait()`/`wait(time)` | 释放锁，进入等待/计时等待状态 |
+| `Object` 类 | `notify()` | 随机唤醒一个等待的线程 |
+| `Object` 类 | `notifyAll()` | 唤醒所有等待的线程 |
+
+### 三、同步、死锁及如何避免
+
+#### 1. 核心结论
+
+多线程共享资源时需通过同步保证原子操作，避免数据不一致；死锁由线程间循环等待锁导致，可通过统一锁顺序等方式避免。
+
+#### 2. 为什么需要线程同步
+
+1. 多线程同时读写共享变量时，可能出现数据不一致。
+2. 原子操作（不可中断的指令集）在多线程环境下可能被拆分执行（如 `n = n + 1` 对应 3 条指令）。
+3. 同步可保证一组指令原子执行，其他线程需等待。
+
+#### 3. 同步的实现方式
+
+使用 `synchronized` 关键字对对象加锁，锁定代码块或方法：
+
+```java
+// 代码块同步
+synchronized (lockObject) {
+    // 需原子执行的逻辑（如共享变量读写）
+    Counter.count += 1;
+}
+```
+
+#### 4. 死锁的产生条件
+
+1. 线程 A 持有锁 A，试图获取锁 B。
+2. 线程 B 持有锁 B，试图获取锁 A。
+3. 双方互相等待，无法释放已持有锁，导致永久阻塞。
+
+#### 5. 死锁的避免方法
+
+1. 线程获取锁的顺序保持一致（如统一先获取锁 A，再获取锁 B）。
+2. 避免长时间持有锁，减少锁的持有范围。
+
+### 四、多线程应用——生产者与消费者模式
+
+#### 1. 核心结论
+
+生产者消费者模式通过缓冲区解耦生产和消费流程，支持高并发，需通过同步机制保证缓冲区数据一致性。
+
+#### 2. 模式特点
+
+1. 生产者：负责产生数据，提交到缓冲区。
+2. 消费者：从缓冲区获取数据并处理。
+3. 缓冲区：作为中间层，平衡生产和消费速度。
+   - 缓冲区满时阻塞生产者，唤醒消费者。
+   - 缓冲区空时阻塞消费者，唤醒生产者。
+
+#### 3. 简单实现方式
+
+1. 缓冲区：用集合存储数据，通过 `synchronized` 同步，结合 `wait()`/`notifyAll()` 实现阻塞唤醒。
+2. 生产者：实现 `Runnable` 接口，向缓冲区提交数据。
+3. 消费者：实现 `Runnable` 接口，从缓冲区获取数据。
+
+核心代码示例：
+
+```java
+// 缓冲区
+public class Buffer {
+    private List<Integer> data = new ArrayList<>();
+    private static final int MAX = 2; // 缓冲区最大容量
+
+    // 生产者放入数据
+    public void put(int value) throws InterruptedException {
+        synchronized (this) {
+            while (data.size() == MAX) {
+                System.out.println("缓冲区满，生产者等待...");
+                this.wait(); // 缓冲区满，阻塞生产者
+            }
+            data.add(value);
+            System.out.println("生产者放入：" + value);
+            this.notifyAll(); // 唤醒消费者和其他生产者
+        }
+    }
+
+    // 消费者获取数据
+    public Integer take() throws InterruptedException {
+        synchronized (this) {
+            while (data.size() == 0) {
+                System.out.println("缓冲区空，消费者等待...");
+                this.wait(); // 缓冲区空，阻塞消费者
+            }
+            Integer val = data.remove(0);
+            System.out.println("消费者取出：" + val);
+            this.notifyAll(); // 唤醒生产者和其他消费者
+            return val;
+        }
+    }
+}
+
+// 生产者
+public class Producer implements Runnable {
+    private Buffer buffer;
+    public Producer(Buffer buffer) { this.buffer = buffer; }
+    @Override
+    public void run() {
+        try {
+            buffer.put(new Random().nextInt(100));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+// 消费者
+public class Consumer implements Runnable {
+    private Buffer buffer;
+    public Consumer(Buffer buffer) { this.buffer = buffer; }
+    @Override
+    public void run() {
+        try {
+            buffer.take();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+#### 4. 缓冲区判断条件用 `while` 而非 `if` 的原因
+
+1. 线程被唤醒后，需重新检查条件（可能其他线程已修改缓冲区状态）。
+2. `if` 仅判断一次，可能导致错误执行（如缓冲区仍满时生产者继续放入）。
+3. `while` 循环会在唤醒后再次校验条件，确保逻辑正确。
+
+#### 5. `wait` 方法放在同步块里的原因
+
+1. `wait()` 方法调用时会释放对象锁，需先通过 `synchronized` 获取锁。
+2. 若不在同步块中调用，会抛出 `IllegalMonitorStateException` 异常。
+3. 保证等待和唤醒的原子性，避免线程安全问题。
+
+#### 6. 模式优点
+
+1. 解耦：生产者和消费者通过缓冲区通讯，无需直接关联。
+2. 高并发：支持多个生产者和消费者异步执行，提高效率。
+3. 平衡速度：通过缓冲区缓解生产和消费速度不匹配的问题。
+
+### 五、任务与线程池
+
+#### 1. 核心结论
+
+`Callable` 接口支持线程返回结果和抛出异常，结合 `FutureTask` 可获取执行结果；线程池通过复用线程降低开销，提供高效的任务管理机制。
+
+#### 2. 线程的另一种建立方式（有返回值、可抛异常）
+
+1. 实现 `Callable` 接口：重写 `call()` 方法，指定返回值类型，可抛出异常。
+2. 结合 `FutureTask` 使用：`FutureTask` 实现 `Runnable` 接口，可通过 `Thread` 启动，同时提供 `get()` 方法获取结果。
+
+代码示例：
+
+```java
+// 实现 Callable 接口
+Callable<String> callable = new Callable<String>() {
+    @Override
+    public String call() throws Exception {
+        return "任务执行结果";
+    }
+};
+
+// 结合 FutureTask
+FutureTask<String> task = new FutureTask<>(callable);
+new Thread(task).start(); // 启动线程
+
+// 获取执行结果（会阻塞直到任务完成）
+String result = task.get();
+System.out.println(result);
+```
+
+#### 3. 引入线程池的原因
+
+1. 降低资源消耗：重复利用线程，减少线程创建和销毁的开销。
+2. 提高响应速度：任务到达时无需等待线程创建，可直接执行。
+3. 便于管理：统一分配、调优和监控线程，避免无限制创建线程导致系统不稳定。
+
+#### 4. 线程池的多任务控制方式
+
+1. 核心参数：核心线程数（corePoolSize）、最大线程数（maximumPoolSize）、空闲线程存活时间（keepAliveTime）、阻塞队列（workQueue）等。
+2. 控制流程：
+   - 若工作线程数 < 核心线程数，创建核心线程执行任务。
+   - 若工作线程数 ≥ 核心线程数，且队列未满，将任务加入队列。
+   - 若队列已满，且工作线程数 < 最大线程数，创建非核心线程执行任务。
+   - 若队列已满且工作线程数 ≥ 最大线程数，按拒绝策略处理任务（默认抛异常）。
+
+---
+
+## 11 泛型与反射
+
+### 一、泛型基础：为什么需要泛型？什么是泛型？
+
+#### 1. 为什么需要泛型
+
+传统集合（如未指定类型的 `ArrayList`）允许添加任意类型对象，缺乏类型检查，获取元素时需强制转型，易出现类型转换异常。
+
+#### 2. 什么是泛型
+
+Java 5 引入的编译时类型安全监测机制，通过参数类型（type parameters）指定操作的数据类型，将数据类型作为参数传递。
+
+#### 3. 使用泛型的优点
+
+- 无需强制转型：编译器明确集合元素类型，获取时直接返回指定类型。
+- 编译时类型检查：非法数据类型在编译阶段被检测，避免运行时异常。
+
+示例：
+
+```java
+// 泛型使用
+ArrayList<String> list = new ArrayList<>();
+list.add("str"); // 合法
+list.add(100); // 编译报错，Required type: String, Provided: int
+String name = list.get(0); // 无需强制转型
+```
+
+### 二、泛型类、泛型方法、泛型接口
+
+#### 1. 泛型类的定义
+
+- 语法：类名后声明类型变量（如 `T`、`E`、`K`、`V`），先声明后使用。
+- 类型变量含义：`T`（Type）、`E`（Element）、`K`（Key）、`V`（Value）等。
+
+示例：
+
+```java
+// 单个泛型类
+class Generic<T> {
+    public T t;
+    public Generic(T t) { this.t = t; }
+    public T fun(T t) { return t; }
+}
+
+// 多个泛型类
+class Generic<T, E> {
+    public T t;
+    public E e;
+    public void fun(T t, E e) {}
+}
+
+// 使用示例
+Generic<String> g1 = new Generic<>("test");
+Generic<String, Integer> g2 = new Generic<>("num", 100);
+```
+
+#### 2. 泛型方法的定义
+
+- 特征：方法声明时显式指定泛型（如 `<T>`），与所在类是否为泛型类无关。
+- 定义位置：可在普通类或泛型类中定义。
+- 静态泛型方法：不能使用泛型类的类型变量，需独立声明泛型。
+
+示例：
+
+```java
+// 普通类中的泛型方法
+class GenericFun {
+    public <T> T fun2(T t) { return t; }
+    public <T, E> void fun1(T t, E e) {}
+}
+
+// 泛型类中的泛型方法（与类泛型同名时覆盖类泛型）
+class GenericClass<K> {
+    public <T> T fun(T t) { return t; }
+    // 静态泛型方法
+    public static <T> GenericClass<T> staticFun(T t) {
+        return new GenericClass<>();
+    }
+}
+
+// 调用示例
+GenericFun gf = new GenericFun();
+gf.fun2("str"); // 省略类型参数
+gf.<Integer>fun2(100); // 显式指定类型参数
+```
+
+#### 3. 泛型接口的定义
+
+- 语法：接口名后声明类型变量，实现类分两种情况。
+
+示例：
+
+```java
+// 泛型接口
+interface GenericInterface<T> {
+    T fun1();
+}
+
+// 实现类为非泛型类（需指定具体类型）
+class Impl1 implements GenericInterface<String> {
+    @Override
+    public String fun1() { return "test"; }
+}
+
+// 实现类为泛型类（与接口泛型一致）
+class Impl2<T> implements GenericInterface<T> {
+    @Override
+    public T fun1() { return null; }
+}
+```
+
+### 三、泛型的通配符
+
+#### 1. 为什么需要通配符
+
+`Object` 是所有类型的父类，但 `List<Object>` 并非 `List<String>` 的父类，无法接收不同泛型类型的集合参数，通配符解决类型参数灵活适配问题。
+
+#### 2. 三种通配符的用法
+
+- 无限定通配符 `<?>`：接收任意类型的泛型集合，仅用于读取。
+- 上界通配符 `<? extends T>`：仅接收 `T` 类及其子类的泛型集合。
+- 下界通配符 `<? super T>`：仅接收 `T` 类及其超类的泛型集合。
+
+示例：
+
+```java
+// 无限定通配符
+public static void printAll(List<?> list) {
+    for (Object obj : list) { System.out.println(obj); }
+}
+
+// 上界通配符（仅接收Number及其子类）
+public static void printNumber(List<? extends Number> list) {}
+
+// 下界通配符（仅接收Double及其超类）
+public static void printSuperDouble(List<? super Double> list) {}
+
+// 调用示例
+List<String> strList = new ArrayList<>();
+List<Integer> intList = new ArrayList<>();
+printAll(strList); // 合法
+printNumber(intList); // 合法
+```
+
+#### 3. 类型参数 T 与通配符 ? 的区别
+
+- `T`：确定的类型变量，用于泛型类、泛型方法的定义。
+- `?`：不确定的类型，用于泛型方法的参数或调用，不能用于定义类或泛型方法。
+
+示例：
+
+```java
+T t = new Object(); // 合法（定义时使用）
+? obj = new Object(); // 非法（不能直接声明变量）
+```
+
+### 四、泛型的设计——模板方法模式
+
+#### 1. 理解模板方法模式
+
+定义算法骨架，将可变步骤延迟到子类实现，子类不改变算法结构即可重定义特定步骤。
+
+#### 2. 抽象操作与钩子操作的定义时机
+
+- 抽象操作：子类必须实现的核心步骤，父类声明为抽象方法。
+- 钩子操作：父类提供默认实现，子类可根据需求重写拓展。
+
+示例：
+
+```java
+// 抽象类（算法骨架）
+abstract class AbstractClass {
+    // 模板方法（算法骨架）
+    public void templateMethod() {
+        primitiveOperation1(); // 抽象操作
+        hookOperation(); // 钩子操作
+    }
+
+    // 抽象操作（子类必须实现）
+    public abstract void primitiveOperation1();
+
+    // 钩子操作（子类可重写）
+    public void hookOperation() {
+        System.out.println("默认钩子实现");
+    }
+}
+
+// 具体子类
+class ConcreteClass extends AbstractClass {
+    @Override
+    public void primitiveOperation1() {
+        System.out.println("子类实现抽象操作");
+    }
+
+    // 可选重写钩子操作
+    @Override
+    public void hookOperation() {
+        System.out.println("子类重写钩子操作");
+    }
+}
+```
+
+### 五、反射
+
+#### 1. 理解 Class 类
+
+Java 运行时系统为所有对象维护的运行时类型标识符，存储类的完整结构信息（包名、类名、方法、字段等），一个类仅产生一个 `Class` 对象。
+
+#### 2. 正常方式与反射方式的区别
+
+- 正常方式：编译时确定类，通过 `new` 实例化，直接调用方法/字段。
+- 反射方式：运行时动态获取类信息、实例化对象、调用方法/字段，灵活性更高。
+
+#### 3. 获取 Class 类对象的三种方式
+
+1. `getClass()` 方法：通过对象实例获取。
+
+   ```java
+   Student student = new Student();
+   Class<?> clazz1 = student.getClass();
+   ```
+
+2. `Class.forName()` 方法：通过完整类名（包名+类名）获取，需处理 `ClassNotFoundException`。
+
+   ```java
+   Class<?> clazz2 = Class.forName("com.example.Student");
+   ```
+
+3. `T.class` 方式：通过类名直接获取，无需实例化。
+
+   ```java
+   Class<?> clazz3 = Student.class;
+   ```
+
+#### 4. 通过反射构造类的实例
+
+##### `Class.newInstance()`
+
+- 调用类的无参构造函数，无参构造不存在时抛出异常。
+- 示例：
+
+  ```java
+  Class<?> clazz = Student.class;
+  Student student = (Student) clazz.newInstance();
+  ```
+
+##### `Constructor.newInstance()`
+
+- 通过 `Constructor` 对象获取指定构造函数（支持有参、私有构造），需先获取构造器。
+- 示例：
+
+  ```java
+  // 获取有参构造器
+  Constructor<?> constructor = clazz.getConstructor(String.class, int.class);
+  Student student = (Student) constructor.newInstance("Tom", 18);
+
+  // 获取私有构造器
+  Constructor<?> privateConstructor = clazz.getDeclaredConstructor();
+  privateConstructor.setAccessible(true); // 忽略访问权限
+  Student privateStudent = (Student) privateConstructor.newInstance();
+  ```
+
+##### 两种方法的区别
+
+- `Class.newInstance()`：仅支持无参构造，已过时。
+- `Constructor.newInstance()`：支持有参、私有构造，更灵活，推荐使用。
+
+#### 5. 通过反射获取和修改成员变量
+
+1. 获取字段：`getFields()`（公有）、`getDeclaredFields()`（所有访问权限）。
+2. 修改字段：需调用 `setAccessible(true)` 忽略访问权限，通过 `set()` 方法修改值。
+
+示例：
+
+```java
+Class<?> clazz = Student.class;
+Student student = (Student) clazz.newInstance();
+
+// 获取私有字段
+Field nameField = clazz.getDeclaredField("name");
+nameField.setAccessible(true); // 突破私有访问限制
+
+// 读取字段值
+Object name = nameField.get(student);
+// 修改字段值
+nameField.set(student, "Jerry");
+```
+
+#### 6. 通过反射获取和调用成员方法
+
+1. 获取方法：`getMethods()`（公有，含父类）、`getDeclaredMethods()`（所有访问权限）。
+2. 调用方法：通过 `Method.invoke()` 执行，静态方法第一个参数为 `null`。
+
+示例：
+
+```java
+Class<?> clazz = Student.class;
+Student student = (Student) clazz.newInstance();
+
+// 获取公有方法
+Method getNameMethod = clazz.getMethod("getName");
+// 调用方法
+String name = (String) getNameMethod.invoke(student);
+
+// 获取私有方法
+Method privateMethod = clazz.getDeclaredMethod("privateMethod");
+privateMethod.setAccessible(true);
+privateMethod.invoke(student);
+```
+
+### 六、设计安全的全局单例
+
+#### 1. 通过反射破坏单例模式（饿汉式）
+
+饿汉式单例默认私有构造器，但反射可通过 `setAccessible(true)` 突破访问限制，调用私有构造器创建新实例。
+
+示例：
+
+```java
+// 饿汉式单例
+class Singleton {
+    private static final Singleton INSTANCE = new Singleton();
+    private Singleton() {} // 私有构造器
+    public static Singleton getInstance() { return INSTANCE; }
+}
+
+// 反射破坏单例
+Class<?> clazz = Singleton.class;
+Constructor<?> constructor = clazz.getDeclaredConstructor();
+constructor.setAccessible(true); // 突破私有限制
+Singleton instance1 = Singleton.getInstance();
+Singleton instance2 = (Singleton) constructor.newInstance();
+System.out.println(instance1 == instance2); // false，单例被破坏
+```
+
+#### 2. 抵御反射破坏
+
+在私有构造器中添加判断，若单例实例已存在则抛出异常，阻止重复创建。
+
+示例：
+
+```java
+class Singleton {
+    private static final Singleton INSTANCE = new Singleton();
+    private Singleton() {
+        // 抵御反射破坏
+        if (INSTANCE != null) {
+            throw new RuntimeException("单例构造器禁止通过反射调用");
+        }
+    }
+    public static Singleton getInstance() { return INSTANCE; }
+}
+```
+
+---
+
+## 12 网络编程
+
+### 一、网络通信的基本原理及IP地址
+
+#### 1. TCP 的特点
+
+- 面向连接，通信前需建立连接（三次握手）。
+- 可靠传输，通过确认、重传机制保障数据完整送达。
+- 基于字节流，数据以连续字节流形式传输。
+- 适用于对可靠性要求高的场景，如文件传输、网页访问等。
+
+#### 2. IP 地址
+
+- 作用：在互联网中唯一标识一个网络接口，是主机通信的基础标识。
+- 分类：分为 IPv4 和 IPv6 两种。
+  - IPv4：32 位地址，格式为四段十进制数（如 101.202.99.12），目前已耗尽。
+  - IPv6：128 位地址，格式为八段十六进制数（如 2001:0DA8:100A:0000:0000:1020:F2F3:1428），地址资源充足。
+- 特殊地址：本机地址（127.0.0.1），用于本机内部通信。
+- 域名关联：IP 地址不易记忆，通过域名系统（DNS）将字符形式的域名（如 <www.baidu.com）解析为对应的> IP 地址（如 112.80.248.74）。
+
+### 二、Socket 编程类库与 URL 的使用
+
+#### 1. Socket 核心特性
+
+Socket（套接字）是基于 TCP 协议的通信机制，通过 IP 地址和端口号唯一标识，允许将网络连接当作流进行数据传输。
+
+#### 2. Socket 用法
+
+##### 服务器端流程
+
+1. 实例化 `ServerSocket` 并指定监听端口，如 `ServerSocket ss = new ServerSocket(6666)`。
+2. 调用 `accept()` 方法阻塞等待客户端连接，获取客户端对应的 `Socket` 对象，如 `Socket sock = ss.accept()`。
+3. 通过 `Socket` 的 `InputStream` 和 `OutputStream` 进行数据读写，通常启动新线程处理每个客户端连接。
+
+##### 客户端流程
+
+1. 实例化 `Socket` 并指定服务器 IP（或域名）和端口，如 `Socket sock = new Socket("localhost", 6666)`。
+2. 通过 `Socket` 获取输入流（读取服务器数据）和输出流（向服务器发送数据）。
+3. 通信完成后关闭 `Socket`，释放连接资源。
+
+##### 数据传输
+
+```java
+// 服务器/客户端获取流对象
+InputStream in = sock.getInputStream(); // 读取网络数据
+OutputStream out = sock.getOutputStream(); // 写入网络数据
+```
+
+#### 3. URL 用法
+
+##### 定义
+
+URL（Uniform Resource Locator，统一资源定位符）用于从主机读取资源（仅读不写），由协议名、主机名、端口号、路径、查询参数组成。
+
+##### URL 结构示例
+
+`https://zh.wikipedia.org:443/w/index.php?title=统一资源定位符`
+
+- 协议：https
+- 主机名：zh.wikipedia.org
+- 端口号：443
+- 路径：/w/index.php
+- 查询参数：?title=统一资源定位符
+
+##### 创建 URL 对象
+
+URL 类提供 4 种构造方法，常用示例：
+
+```java
+// 1. 通过完整字符串创建
+URL myurl1 = new URL("http://www.edu.cn");
+// 2. 指定协议、主机名、文件路径（端口使用默认值）
+URL myurl2 = new URL("http", "www.edu.cn", "index.html");
+// 3. 指定协议、主机名、端口号、文件路径
+URL myurl3 = new URL("http", "www.edu.cn", 80, "index.html");
+```
+
+##### 通过 URL 获取网页资源
+
+```java
+import java.net.URL;
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        URL url = new URL("https://www.baidu.com/");
+        // 打开输入流读取网页内容
+        BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+        // 创建输出流保存内容到文件
+        BufferedWriter writer = new BufferedWriter(new FileWriter("info.html"));
+        String line;
+        while ((line = reader.readLine()) != null) {
+            System.out.println(line);
+            writer.write(line);
+            writer.newLine(); // 换行
+        }
+        reader.close();
+        writer.close();
+    }
+}
+```
+
+### 三、观察者模式
+
+#### 1. 核心定义
+
+- 定义对象间的一对多依赖关系，当一个对象（观察目标）状态改变时，所有依赖它的对象（观察者）会被自动通知并更新。
+- 关键角色：观察目标（状态改变的对象）、观察者（接收通知并更新的对象）。
+
+#### 2. UML 类图
+
+![观察者模式 uml 类图](观察者模式uml类图.svg)
+
+#### 3. 优缺点
+
+##### 优点
+
+- 实现表示层与数据逻辑层分离，降低模块耦合度。
+- 观察目标与观察者间为抽象耦合，支持各自独立扩展和复用。
+- 支持广播通信，简化一对多系统的设计。
+- 符合开闭原则，新增观察者或观察目标无需修改原有代码。
+
+##### 缺点
+
+- 通知所有观察者可能消耗较多时间，影响系统响应速度。
+- 若存在循环依赖，可能导致系统崩溃。
+- 观察者仅知道目标状态发生改变，无法获知具体改变细节。
 
 {{< ai-generated >}}
