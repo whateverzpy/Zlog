@@ -596,6 +596,8 @@ class Student extends Person {
     - 运行时异常（`RuntimeException` 子类）：编译时可忽略（如空指针异常、数组越界异常）。
     - 检查性异常：编译时必须处理（如 `SQLException`、`IOException`）。
 
+![异常继承框架](异常继承框架.png)
+
 #### 3. 设计自定义异常
 
 - 规则：必须继承 `Throwable` 子类，继承 `Exception` 为检查性异常，继承 `RuntimeException` 为运行时异常。
