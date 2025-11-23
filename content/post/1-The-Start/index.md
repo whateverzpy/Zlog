@@ -111,7 +111,7 @@ A footnote can also have multiple lines[^2].
 
 **带源的引用 (Shortcode)**
 
-{{< quote author="A famous person" source="The book he wrote" url="https://en.wikipedia.org/wiki/Book">}}
+{{< quote author="A famous person" source="The book he wrote" url="https://en.wikipedia.org/wiki/Book" >}}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 {{< /quote >}}
 
@@ -222,3 +222,13 @@ graph TD;
 **English Long Text**
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+## 字体
+
+本博客主要使用以下字体：
+
+- 中文字体：[Noto Serif SC](https://fonts.google.com/noto/specimen/Noto+Serif+SC?query=noto+serif+sc)
+- 英文字体：[Source Serif 4](https://fonts.google.com/specimen/Source+Serif+4)
+- 代码字体：[Cascadia Code](https://fonts.google.com/specimen/Cascadia+Code)（代码中中文部分使用[霞鹜文楷](https://github.com/lxgw/LxgwWenKai)）
+
+为了跨平台显示的统一性，本博客使用网站自托管字体，尽管损失了存储空间，但这样是值得的。
