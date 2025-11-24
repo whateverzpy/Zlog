@@ -6,22 +6,22 @@ date = '2024-12-11T21:28:16+08:00'
 title = '一切的开始'
 description = '用 Hugo 搭建的个人博客'
 tags = ['Hugo', '博客']
-lastmod = '2025-11-19T21:00:00+08:00'
+lastmod = '2025-11-24T12:27:00+08:00'
 +++
 
-## 关于
+## 关于 About
 
 本博客由 [Hugo](https://gohugo.io/) 搭建，由于框架非常简单，事实上我并没有做什么实质性的工作，多半就是在已有的模板上修修改改而已。
 
-## 主题
+## 主题 Theme
 
 大部分主题样式照搬了 [Hugo Theme Stack](https://github.com/CaiJimmy/hugo-theme-stack)，自己做了一些修改，希望以后可以自己完善或添加一些功能。
 
-## 寄语
+## 寄语 Message
 
-希望能在这里分享一些我在学习过程中遇到问题然后解决的方法，希望能坚持下去（真的可以吗。。。。
+希望能在这里分享一些我在学习过程中遇到问题然后解决的方法，希望能坚持下去。
 
-## 测试
+## 测试 Test
 
 以下为测试内容，旨在覆盖各种 Markdown 语法及 Hugo Shortcodes 的渲染效果。
 
@@ -29,17 +29,17 @@ lastmod = '2025-11-19T21:00:00+08:00'
 
 **基础文本样式**
 
-**这是粗体文本**
+**这是粗体文本 This is bold text**
 
-_这是斜体文本_
+_这是斜体文本 This is italic text_
 
-**_这是粗体加斜体文本_**
+**_这是粗体加斜体文本 This is bold and italic text_**
 
-~~这是删除线文本~~
+~~这是删除线文本 This is strikethrough text~~
 
-<u>这是下划线文本</u>
+<u>这是下划线文本 This is underline text</u>
 
-<mark>这是高亮文本</mark>
+<mark>这是高亮文本 This is highlighted text</mark>
 
 **HTML 元素**
 
@@ -94,7 +94,7 @@ Hello! :wave:
 
 **基础引用**
 
-> 这是一个引用块。
+> 这是一个引用块。\
 > 引用块中的代码 `text`。
 
 **带有脚注的引用**
@@ -228,8 +228,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 本博客主要使用以下字体：
 
-- 中文字体：[Noto Serif SC](https://fonts.google.com/noto/specimen/Noto+Serif+SC?query=noto+serif+sc)
-- 英文字体：[Source Serif 4](https://fonts.google.com/specimen/Source+Serif+4)
+- 中文字体：[霞鹜新致宋](https://github.com/lxgw/LxgwNeoZhiSong)
+- 英文字体：[Recursive](https://fonts.google.com/specimen/Recursive)
 - 代码字体：[Cascadia Code](https://fonts.google.com/specimen/Cascadia+Code)（代码中中文部分使用[霞鹜文楷](https://github.com/lxgw/LxgwWenKai)）
-
-为了跨平台显示的统一性，本博客使用网站自托管字体，尽管损失了存储空间，但这样是值得的。
+- 签名字体：[Dancing Script](https://fonts.google.com/specimen/Dancing+Script)
