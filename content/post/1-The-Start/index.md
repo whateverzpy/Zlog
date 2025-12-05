@@ -224,11 +224,11 @@ graph TD;
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-## 字体
+## 字体 Fonts
 
 本博客主要使用以下字体：
 
-- 中文字体：[霞鹜新致宋](https://github.com/lxgw/LxgwNeoZhiSong)
+- 中文字体：[霞鹜新致宋](https://github.com/lxgw/LxgwNeoZhiSong)、[霞鹜文楷](https://github.com/lxgw/LxgwWenKai)
 - 英文字体：[Recursive](https://fonts.google.com/specimen/Recursive)
 - 代码字体：[Cascadia Code](https://fonts.google.com/specimen/Cascadia+Code)（代码中中文部分使用[霞鹜文楷](https://github.com/lxgw/LxgwWenKai)）
 - 签名字体：[Dancing Script](https://fonts.google.com/specimen/Dancing+Script)
